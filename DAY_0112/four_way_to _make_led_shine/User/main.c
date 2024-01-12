@@ -16,6 +16,7 @@
 *********************************************************************************************/
 #include "stm32f10x.h" //STM32头文件
 #include "sys.h"
+#include "delay.h"
 #include "led.h"
 
 
@@ -24,11 +25,11 @@ int main (void){//主程序
 	LED_Init();
 	while(1){ 
 		
-		LED1 = 1;
-		
 		//方法1：
-// 		GPIO_WriteBit(LEDPORT,LED1,(BitAction)(1)); //LED1接口输出高电平1
-// 		GPIO_WriteBit(LEDPORT,LED1,(BitAction)(0)); //LED1接口输出低电平0
+ 		GPIO_WriteBit(LEDPORT,LED1,(BitAction)(1)); //LED1接口输出高电平1
+		delay_us(50000);
+ 		GPIO_WriteBit(LEDPORT,LED1,(BitAction)(0)); //LED1接口输出低电平0
+		delay_us(50000);
 		
 		//方法2：
 //		GPIO_WriteBit(LEDPORT,LED1,(BitAction)(1-GPIO_ReadOutputDataBit(LEDPORT,LED1))); //取反LED1

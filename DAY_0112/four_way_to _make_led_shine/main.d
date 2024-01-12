@@ -29,4 +29,5 @@ main.o: .\Lib\inc\stm32f10x_usart.h
 main.o: .\Lib\inc\stm32f10x_wwdg.h
 main.o: .\Lib\inc\misc.h
 main.o: .\Basic\sys\sys.h
+main.o: .\Basic\delay\delay.h
 main.o: .\Hardware\LED\led.h
