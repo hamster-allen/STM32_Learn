@@ -38,7 +38,7 @@
 ### ADS-LD Output File: 'learn_create.axf'
 ### ADS-LD Command File: 'learn_create.lnp'
 ### Checking for dirty Components...
-### Creating CmdFile 'learn_create.lnp', Handle=0x00000BD0
+### Creating CmdFile 'learn_create.lnp', Handle=0x00000BE0
 ### Writing '.lnp' file
 ### ADS-LD Command file 'learn_create.lnp' is ready.
 ### ADS-LD: About to start ADS-LD Thread.
