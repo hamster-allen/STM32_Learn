@@ -27,7 +27,7 @@
 ### ADS-LD Output File: 'YT32B1_STM32F103_demo.axf'
 ### ADS-LD Command File: 'YT32B1_STM32F103_demo.lnp'
 ### Checking for dirty Components...
-### Creating CmdFile 'YT32B1_STM32F103_demo.lnp', Handle=0x000007E0
+### Creating CmdFile 'YT32B1_STM32F103_demo.lnp', Handle=0x00000384
 ### Writing '.lnp' file
 ### ADS-LD Command file 'YT32B1_STM32F103_demo.lnp' is ready.
 ### ADS-LD: About to start ADS-LD Thread.
