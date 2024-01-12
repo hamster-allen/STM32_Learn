@@ -85,6 +85,7 @@
 # 如何編寫delay函數(us微秒)
 
 `SysTick -> LOAD = 72*要延遲的時間(us微秒);`將計數值裝入暫存器(因主頻為72MHz，72次為一微秒)<br>
+`SysTick -> VAL = 0x00;`清空定時器的計數器，避免連續調用時造成時間不準確
 `SysTick -> CTRL = 0x00000005;`時鐘源HCLK，打開定時器<br>
 `while(!(SysTick -> CTRL&0x00010000));`等待計數到0時退出迴圈<br>
 `SysTick -> CTRL = 0x00000004;`關閉定時器<br>
