@@ -11,4 +11,12 @@
 * `FLASH_ClearFlag(FLASH_FLAG_BSY|FLASH_FLAG_EOP|FLASH_FLAG_PGERR|FLASH_FLAG_WRPRTERR);` 清除Flash旗標<br>
 * `FLASH_Lock();` 鎖定Flash擦除控制器<br>
 
+> 在清除地址頁中，只需要給指定的地址就會自動判斷是哪一頁並清除
+
+## 讀取數據
+
+`u16 a`設定儲存返回資料的變數<br>
+`a = *(u16*)(指定地址)`從指定的地址開始讀取資料返回<br>
+
+
 
