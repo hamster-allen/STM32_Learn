@@ -35,9 +35,9 @@ int main (void){//主程序
 		//菜单0
 		if(MENU == 0){ //变亮循环
 			for(i = 0; i < 10; i++){
-				GPIO_WriteBit(LEDPORT,LED1,(BitAction)(1)); //LED1接口输出高电平1
+				GPIO_SetBits(LEDPORT,LED1); //LED1接口输出高电平1
 				delay_us(t); //延时
-				GPIO_WriteBit(LEDPORT,LED1,(BitAction)(0)); //LED1接口输出低电平0
+				GPIO_ResetBits(LEDPORT,LED1); //LED1接口输出低电平0
 				delay_us(501-t); //延时
 			}
 			t++;
@@ -48,9 +48,9 @@ int main (void){//主程序
 		//菜单1
 		if(MENU == 1){ //变暗循环
 			for(i = 0; i < 10; i++){
-				GPIO_WriteBit(LEDPORT,LED1,(BitAction)(1)); //LED1接口输出高电平1
+				GPIO_SetBits(LEDPORT,LED1); //LED1接口输出高电平1
 				delay_us(t); //延时
-				GPIO_WriteBit(LEDPORT,LED1,(BitAction)(0)); //LED1接口输出低电平0
+				GPIO_ResetBits(LEDPORT,LED1); //LED1接口输出低电平0
 				delay_us(501-t); //延时
 			}
 			t--;
