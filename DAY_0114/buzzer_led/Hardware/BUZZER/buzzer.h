@@ -8,7 +8,7 @@
 
 
 void BUZZER_Init(void);//初始化
-void BUZZER_BEEP1(void);//响一声
+void BUZZER_BEEP1(u16 k);//响一声
 
 		 				    
 #endif

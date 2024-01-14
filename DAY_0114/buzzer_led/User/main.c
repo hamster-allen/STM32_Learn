@@ -34,7 +34,7 @@ int main (void){//主程序
 	KEY_Init();//按键初始化
 
 	BUZZER_Init();//蜂鸣器初始化
-	BUZZER_BEEP1();//蜂鸣器音1
+	BUZZER_BEEP1(1);//蜂鸣器音1
 
     a = FLASH_R(FLASH_START_ADDR);//从指定页的地址读FLASH
 
@@ -54,7 +54,7 @@ int main (void){//主程序
 				}
 				GPIO_Write(LEDPORT,a|0xfffc&GPIO_ReadOutputData(LEDPORT)); //直接数值操作将变量值写入LED（LED在GPIOB组的PB0和PB1上）
 			
-				BUZZER_BEEP1();//蜂鸣器音1
+				BUZZER_BEEP1(a);//蜂鸣器音1
 
 				FLASH_W(FLASH_START_ADDR,a); //从指定页的地址写入FLASH
 				while(!GPIO_ReadInputDataBit(KEYPORT,KEY1)); //等待按键松开 
