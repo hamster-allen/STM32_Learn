@@ -22,6 +22,11 @@
 `NVIC_InitStructure.NVIC_IRQChannelSubPriority = 3;`設定子優先級為3<br>
 `NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;`啟動IRQ通道<br>
 `NVIC_Init(&NVIC_InitStructure);`根據指定參數初始化VIC佔存器<br>
+
+> 搶佔優先級：搶佔優先級的中斷事件會打斷當前的主程序或中斷程序的運行
+
+> 子優先級：當搶佔優先級相同的中斷事件同時觸發時，將會優先處理子優先級較高的事件
+
 ### USART初始化
 `USART_InitStructure.USART_BaudRate = bound;`設定波特率(bound)<br>
 `USART_InitStructure.USART_WordLength = USART_WordLength_8b;`設定字長數據格式為8位<br>
@@ -32,6 +37,8 @@
 `USART_Init(USART1, &USART_InitStructure);`初始化串口<br>
 `USART_ITConfig(USART1, USART_IT_RXNE, ENABLE);`開啟串口中斷<br>
 `USART_Cmd(USART1, ENABLE);`啟動串口<br>
+
+-----------------
 
 
 
