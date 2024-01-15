@@ -505,11 +505,6 @@
               <FileType>1</FileType>
               <FilePath>.\Hardware\BUZZER\buzzer.c</FilePath>
             </File>
-            <File>
-              <FileName>midi.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Hardware\BUZZER\midi.c</FilePath>
-            </File>
           </Files>
         </Group>
       </Groups>
