@@ -1,7 +1,7 @@
 main.o: User\main.c
 main.o: .\CMSIS\stm32f10x.h
 main.o: .\CMSIS\core_cm3.h
-main.o: C:\Keil\ARM\RV31\INC\stdint.h
+main.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
 main.o: .\CMSIS\system_stm32f10x.h
 main.o: .\User\stm32f10x_conf.h
 main.o: .\Lib\inc\stm32f10x_adc.h
@@ -31,7 +31,7 @@ main.o: .\Lib\inc\misc.h
 main.o: .\Basic\sys\sys.h
 main.o: .\Basic\delay\delay.h
 main.o: .\Basic\usart\usart.h
-main.o: C:\Keil\ARM\RV31\INC\stdarg.h
-main.o: C:\Keil\ARM\RV31\INC\stdlib.h
-main.o: C:\Keil\ARM\RV31\INC\string.h
-main.o: C:\Keil\ARM\RV31\INC\stdio.h
+main.o: C:\Keil\ARM\ARMCC\bin\..\include\stdarg.h
+main.o: C:\Keil\ARM\ARMCC\bin\..\include\stdlib.h
+main.o: C:\Keil\ARM\ARMCC\bin\..\include\string.h
+main.o: C:\Keil\ARM\ARMCC\bin\..\include\stdio.h

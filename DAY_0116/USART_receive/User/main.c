@@ -32,10 +32,10 @@ int main (void){//主程序
 	while(1){
 
 		//查询方式接收
-		if(USART_GetFlagStatus(USART1,USART_FLAG_RXNE) != RESET){  //查询串口待处理标志位
-			a =USART_ReceiveData(USART1);//读取接收到的数据
-			printf("%c",a); //把收到的数据发送回电脑		  
-		}
+// 		if(USART_GetFlagStatus(USART1,USART_FLAG_RXNE) != RESET){  //查询串口待处理标志位
+// 			a =USART_ReceiveData(USART1);//读取接收到的数据
+// 			printf("%c",a); //把收到的数据发送回电脑		  
+// 		}
 		 
 
 //      delay_ms(1000); //延时
