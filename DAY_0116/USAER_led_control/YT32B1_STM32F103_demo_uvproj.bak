@@ -345,7 +345,7 @@
               <MiscControls></MiscControls>
               <Define>USE_STDPERIPH_DRIVER,STM32F10X_MD</Define>
               <Undefine></Undefine>
-              <IncludePath>.\CMSIS;.\Lib\inc;.\Lib\src;.\User;.\Startup;.\Basic\delay;.\Basic\sys;.\Hardware\LED;.\Hardware\KEY;.\Basic\flash;.\Hardware\BUZZER</IncludePath>
+              <IncludePath>.\CMSIS;.\Lib\inc;.\Lib\src;.\User;.\Startup;.\Basic\delay;.\Basic\sys;.\Hardware\LED;.\Hardware\KEY;.\Basic\flash;.\Hardware\BUZZER;.\Basic\usart</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -484,6 +484,11 @@
               <FileName>flash.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Basic\flash\flash.c</FilePath>
+            </File>
+            <File>
+              <FileName>usart.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Basic\usart\usart.c</FilePath>
             </File>
           </Files>
         </Group>
