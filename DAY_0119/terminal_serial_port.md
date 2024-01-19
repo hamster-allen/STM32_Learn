@@ -1,7 +1,7 @@
 # 如何在USART接收時取得{}中間的資料
 
 
-中斷函數
+## 中斷函數
 ```
 void USART1_IRQHandler(void)
 {
