@@ -40,7 +40,13 @@
 > 觸發模式(有鎖存)：被按下放開後保持狀態<br>
 > 直接模式(無鎖存)：被按下放開後不保持狀態<br>
 
+## TTP223-BA6反應速度(硬體)
 
+* 調節電容值可使靈敏度變高或變低，使用範圍(0≤C<sub>s</sub>≤50pF)<br>
+* 電容值越大靈敏度越低<br>
+* 透過實際測試取得合適的觸摸效果<br>
+
+![image](https://github.com/hamster-allen/STM32_Learn/blob/master/DAY_0122/%E8%A7%B8%E6%91%B8%E6%8C%89%E9%8D%B5%E5%8F%8D%E6%98%A0%E9%80%9F%E5%BA%A6.png)
 
 
 
