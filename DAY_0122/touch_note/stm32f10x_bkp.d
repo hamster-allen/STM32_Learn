@@ -2,7 +2,7 @@ stm32f10x_bkp.o: Lib\src\stm32f10x_bkp.c
 stm32f10x_bkp.o: .\Lib\inc\stm32f10x_bkp.h
 stm32f10x_bkp.o: .\CMSIS\stm32f10x.h
 stm32f10x_bkp.o: .\CMSIS\core_cm3.h
-stm32f10x_bkp.o: C:\Keil\ARM\RV31\INC\stdint.h
+stm32f10x_bkp.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
 stm32f10x_bkp.o: .\CMSIS\system_stm32f10x.h
 stm32f10x_bkp.o: .\User\stm32f10x_conf.h
 stm32f10x_bkp.o: .\Lib\inc\stm32f10x_adc.h
