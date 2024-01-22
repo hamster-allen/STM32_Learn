@@ -12,6 +12,8 @@
 ## 觸摸按鍵電路圖
 ![image](https://github.com/hamster-allen/STM32_Learn/blob/master/DAY_0122/%E8%A7%B8%E6%91%B8%E6%8C%89%E9%8D%B5%E9%9B%BB%E8%B7%AF%E5%9C%96.png)
 
+<br>
+
 ## TTP223-BA6
 
 * 為觸摸按鍵檢測IC，低功號、寬工作電壓<br>
@@ -39,6 +41,8 @@
 > TOG<br>
 > 觸發模式(有鎖存)：被按下放開後保持狀態<br>
 > 直接模式(無鎖存)：被按下放開後不保持狀態<br>
+
+<br>
 
 ## TTP223-BA6反應速度(硬體)
 
