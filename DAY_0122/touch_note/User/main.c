@@ -35,13 +35,15 @@ int main (void){//主程序
 			delay_ms(20); //延时去抖动
 			if(!GPIO_ReadInputDataBit(TOUCH_KEYPORT,TOUCH_KEY_A)){//判断长短键
 				while((!GPIO_ReadInputDataBit(TOUCH_KEYPORT,TOUCH_KEY_A))&&c<KEYA_SPEED1){ //循环判断长按，到时跳转
-					c++;delay_ms(10); //长按判断的计时
+					c++;
+					delay_ms(10); //长按判断的计时
 				}
 				if(c>=KEYA_SPEED1){ //长键处理
 					//长按后执行的程序放到此处
 					GPIO_WriteBit(LEDPORT,LED1,(BitAction)(1));//LED控制
 					while(!GPIO_ReadInputDataBit(TOUCH_KEYPORT,TOUCH_KEY_A));
-				}else{ //单击处理
+				}
+				else{ //单击处理
 					for(b=0;b<KEYA_SPEED2;b++){//检测双击
 						delay_ms(20);
 						if(!GPIO_ReadInputDataBit(TOUCH_KEYPORT,TOUCH_KEY_A)){

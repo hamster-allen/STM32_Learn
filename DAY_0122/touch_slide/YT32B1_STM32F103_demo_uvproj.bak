@@ -345,7 +345,7 @@
               <MiscControls></MiscControls>
               <Define>USE_STDPERIPH_DRIVER,STM32F10X_MD</Define>
               <Undefine></Undefine>
-              <IncludePath>.\CMSIS;.\Lib\inc;.\Lib\src;.\User;.\Startup;.\Basic\delay;.\Basic\sys;.\Hardware\LED;.\Hardware\KEY;.\Basic\flash;.\Hardware\BUZZER;.\Basic\usart;.\Basic\rtc;.\Hardware\TOUCH_KEY</IncludePath>
+              <IncludePath>.\CMSIS;.\Lib\inc;.\Lib\src;.\User;.\Startup;.\Basic\delay;.\Basic\sys;.\Hardware\LED;.\Hardware\KEY;.\Basic\flash;.\Hardware\BUZZER;.\Basic\usart;.\Basic\rtc</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -514,11 +514,6 @@
               <FileName>buzzer.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Hardware\BUZZER\buzzer.c</FilePath>
-            </File>
-            <File>
-              <FileName>touch_key.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Hardware\TOUCH_KEY\touch_key.c</FilePath>
             </File>
           </Files>
         </Group>
