@@ -40,18 +40,21 @@ int main (void){//主程序
 			delay_ms(20); //延时去抖动
 			if(!GPIO_ReadInputDataBit(TOUCH_KEYPORT,TOUCH_KEY_A)){//判断长短键
 				while((!GPIO_ReadInputDataBit(TOUCH_KEYPORT,TOUCH_KEY_A))&&c<KEYA_SPEED1){ //循环判断长按，到时跳转
-					c++;delay_ms(10); //长按判断的计时
+					c++;
+					delay_ms(10); //长按判断的计时
 				}
 				if(c>=KEYA_SPEED1){ //长键处理
 					//长按后执行的程序放到此处
 					GPIO_WriteBit(LEDPORT,LED1,(BitAction)(1));//LED控制
 					printf("A键长按 \r\n");
 					while(!GPIO_ReadInputDataBit(TOUCH_KEYPORT,TOUCH_KEY_A));
-				}else{ //单击处理
+				}
+				else{ //单击处理
 					if(!GPIO_ReadInputDataBit(TOUCH_KEYPORT,TOUCH_KEY_B)){
 						k++; //用于显示的计数值
 						printf("A键右滑 %d \r\n",k); 
-						a=1;s=1; //a是单双击判断标志，s是刚刚结束滑动标志
+						a=1;
+						s=1; //a是单双击判断标志，s是刚刚结束滑动标志
 					}
 					if(a==0){
 						for(b=0;b<KEYA_SPEED2;b++){//检测双击
