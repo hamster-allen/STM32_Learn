@@ -19,9 +19,15 @@
 ![image](https://github.com/hamster-allen/STM32_Learn/blob/master/DAY_0123/LM4871%E6%8F%9A%E8%81%B2%E5%99%A8.png)
 
 
+## TM1640
 
+***LED驅動專用IC，內部集成有MCU數字接口、數據鎖存器、LED驅動等電路***
 
-
+* 顯示(8段*16位)
+* 亮度調節(占空比8級)
+* 串型接口(SCLK，DIN)
+* 內置RC振盪
+* 內置上電復位
 
 
 
