@@ -1,17 +1,22 @@
 # 七段顯示器
 
 
-# 開發版事前作業
+## 開發版事前作業
 
-* 將印有**數碼管(P9)**的**PA11、PA12**接上 
+* 將印有**數碼管(P9)**的**PA11、PA12**接上
+  
+![image](https://github.com/hamster-allen/STM32_Learn/blob/master/DAY_0123/PA11_PA12.png)
+
 
 * 將CAM總線的RX、TX斷開<br>
 * 因為腳位與七段顯示器復用
 
+![image](https://github.com/hamster-allen/STM32_Learn/blob/master/DAY_0123/CAM_RX_TX.png)
+
 * 將LM4871與GND斷開<br>
 * 否則當STM與七段顯示器進行總線通信時，會發出雜音
 
-
+![image](https://github.com/hamster-allen/STM32_Learn/blob/master/DAY_0123/LM4871%E6%8F%9A%E8%81%B2%E5%99%A8.png)
 
 
 
