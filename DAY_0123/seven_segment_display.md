@@ -42,7 +42,9 @@
 |VDD|邏輯電源|接電源正|
 |VSS|邏輯地|接系統地|
 
+### 電路範例
 
+![image](https://github.com/hamster-allen/STM32_Learn/blob/master/DAY_0123/TM1640%E9%9B%BB%E8%B7%AF%E7%AF%84%E4%BE%8B.png)
 
 
 
