@@ -39,15 +39,15 @@
 
 ### 【初始化函數】
 
-`GPIO_InitTypeDef  GPIO_InitStructure;`定義枚舉
-`RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA|RCC_APB2Periph_GPIOB|RCC_APB2Periph_GPIOC,ENABLE);`打開三組GPIO的時鐘源
-`GPIO_InitStructure.GPIO_Pin = ENCODER_L | ENCODER_D;`定義要初始化的腳位(PA組的兩個腳位)
-`GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;`選擇腳位為上拉電阻模式     
-`GPIO_Init(ENCODER_PORT_A,&GPIO_InitStructure);`初始化PA組腳位
+`GPIO_InitTypeDef  GPIO_InitStructure;`定義枚舉<br>
+`RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA|RCC_APB2Periph_GPIOB|RCC_APB2Periph_GPIOC,ENABLE);`打開三組GPIO的時鐘源<br>
+`GPIO_InitStructure.GPIO_Pin = ENCODER_L | ENCODER_D;`定義要初始化的腳位(PA組的兩個腳位)<br>
+`GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;`選擇腳位為上拉電阻模式<br>
+`GPIO_Init(ENCODER_PORT_A,&GPIO_InitStructure);`初始化PA組腳位<br>
 
-`GPIO_InitStructure.GPIO_Pin = ENCODER_R;`定義要初始化的腳位(PB組的腳位)                
-`GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;`選擇腳位為上拉電阻模式      
-`GPIO_Init(ENCODER_PORT_B,&GPIO_InitStructure);`初始化PB組腳位
+`GPIO_InitStructure.GPIO_Pin = ENCODER_R;`定義要初始化的腳位(PB組的腳位)<br>
+`GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;`選擇腳位為上拉電阻模式<br>
+`GPIO_Init(ENCODER_PORT_B,&GPIO_InitStructure);`初始化PB組腳位<br>
 
 ### 【狀態讀取函數】
 
