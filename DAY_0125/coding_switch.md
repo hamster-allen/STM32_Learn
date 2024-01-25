@@ -51,6 +51,14 @@
 
 ### 【狀態讀取函數】
 
+* 卡死說明
+  * 根據下方圖示可了解在旋轉過程中因為各種原因，導致讀取到標示為卡死的波型，造成程序卡在while迴圈無法正常繼續執行<br>
+  * 因此透過卡死旗標標記是否卡死，在函數最後等待放開時，設置卡死旗標，而在函數開始前先判斷電平是否為高電平(無動作狀態)，並清0卡死旗標
+
+![image](https://github.com/hamster-allen/STM32_Learn/blob/master/DAY_0125/coding_switch_picture/%E5%8D%A1%E6%AD%BB%E8%AA%AA%E6%98%8E%E5%9C%96%E7%A4%BA.png)
+
+
+
 * 全區變數
   * `u8 KUP`卡死標誌位
   * `u16 cou`卡死計數器
