@@ -162,8 +162,16 @@ while(NumByteToRead){
 
 > 掉電模式指在讀取溫度後關閉傳感器，可以達到省電的效果，一般不常使用
 
+<br>
 
+## 溫度暫存器表
 
+* 上方Temp MS和Temp LS表示兩個字節一般正常狀態
+* 下方D10為存放正負值
+* 下方D9至D3為存放溫度的整數值
+* 下方D2為存放小數值，高精度的溫度傳感器小數點會由D2至D0
+
+![image](https://github.com/hamster-allen/STM32_Learn/blob/master/DAY_0131/temperature_seven_display_picture/LM75A%E6%BA%AB%E5%BA%A6%E6%9A%AB%E5%AD%98%E5%99%A8%E8%A1%A8.png)
 
 
 
