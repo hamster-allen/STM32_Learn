@@ -20,7 +20,7 @@
   * 讀取I2C時，與I2C復用的IO端口需要設為開漏模式
   * 每個器件都有唯一的地址，最多可有1023個
  
-## I2C函數
+## I2C函數分析
 * 【定義】
   * `#define I2CPORT GPIOB`定義IO組別
   * `#define I2C_SCL GPIO_Pin_6`定義SCL接口
