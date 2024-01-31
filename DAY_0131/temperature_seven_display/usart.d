@@ -2,7 +2,7 @@ usart.o: Basic\usart\usart.c
 usart.o: .\Basic\sys\sys.h
 usart.o: .\CMSIS\stm32f10x.h
 usart.o: .\CMSIS\core_cm3.h
-usart.o: C:\Keil\ARM\RV31\INC\stdint.h
+usart.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
 usart.o: .\CMSIS\system_stm32f10x.h
 usart.o: .\User\stm32f10x_conf.h
 usart.o: .\Lib\inc\stm32f10x_adc.h
@@ -30,7 +30,7 @@ usart.o: .\Lib\inc\stm32f10x_usart.h
 usart.o: .\Lib\inc\stm32f10x_wwdg.h
 usart.o: .\Lib\inc\misc.h
 usart.o: Basic\usart\usart.h
-usart.o: C:\Keil\ARM\RV31\INC\stdarg.h
-usart.o: C:\Keil\ARM\RV31\INC\stdlib.h
-usart.o: C:\Keil\ARM\RV31\INC\string.h
-usart.o: C:\Keil\ARM\RV31\INC\stdio.h
+usart.o: C:\Keil\ARM\ARMCC\bin\..\include\stdarg.h
+usart.o: C:\Keil\ARM\ARMCC\bin\..\include\stdlib.h
+usart.o: C:\Keil\ARM\ARMCC\bin\..\include\string.h
+usart.o: C:\Keil\ARM\ARMCC\bin\..\include\stdio.h

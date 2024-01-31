@@ -3,7 +3,7 @@ encoder.o: Hardware\ENCODER\encoder.h
 encoder.o: .\Basic\sys\sys.h
 encoder.o: .\CMSIS\stm32f10x.h
 encoder.o: .\CMSIS\core_cm3.h
-encoder.o: C:\Keil\ARM\RV31\INC\stdint.h
+encoder.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
 encoder.o: .\CMSIS\system_stm32f10x.h
 encoder.o: .\User\stm32f10x_conf.h
 encoder.o: .\Lib\inc\stm32f10x_adc.h
