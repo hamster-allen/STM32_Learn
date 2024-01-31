@@ -26,13 +26,13 @@ u16 cou;
 
 void ENCODER_Init(void){ //接口初始化
 	GPIO_InitTypeDef  GPIO_InitStructure; //定义GPIO的初始化枚举结构	
-    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA|RCC_APB2Periph_GPIOB|RCC_APB2Periph_GPIOC,ENABLE);       
-    GPIO_InitStructure.GPIO_Pin = ENCODER_L | ENCODER_D; //选择端口号                        
-    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU; //选择IO接口工作方式 //上拉电阻       
+  RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA|RCC_APB2Periph_GPIOB|RCC_APB2Periph_GPIOC,ENABLE);       
+  GPIO_InitStructure.GPIO_Pin = ENCODER_L | ENCODER_D; //选择端口号                        
+  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU; //选择IO接口工作方式 //上拉电阻       
 	GPIO_Init(ENCODER_PORT_A,&GPIO_InitStructure);	
 
-    GPIO_InitStructure.GPIO_Pin = ENCODER_R; //选择端口号                        
-    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU; //选择IO接口工作方式 //上拉电阻       
+  GPIO_InitStructure.GPIO_Pin = ENCODER_R; //选择端口号                        
+  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU; //选择IO接口工作方式 //上拉电阻       
 	GPIO_Init(ENCODER_PORT_B,&GPIO_InitStructure);				
 }
 

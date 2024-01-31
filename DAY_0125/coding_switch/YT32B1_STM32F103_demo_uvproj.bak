@@ -345,7 +345,7 @@
               <MiscControls></MiscControls>
               <Define>USE_STDPERIPH_DRIVER,STM32F10X_MD</Define>
               <Undefine></Undefine>
-              <IncludePath>.\CMSIS;.\Lib\inc;.\Lib\src;.\User;.\Startup;.\Basic\delay;.\Basic\sys;.\Hardware\LED;.\Hardware\KEY;.\Basic\flash;.\Hardware\BUZZER;.\Basic\usart;.\Basic\rtc;.\Hardware\TOUCH_KEY;.\Hardware\TM1640</IncludePath>
+              <IncludePath>.\CMSIS;.\Lib\inc;.\Lib\src;.\User;.\Startup;.\Basic\delay;.\Basic\sys;.\Hardware\LED;.\Hardware\KEY;.\Basic\flash;.\Hardware\BUZZER;.\Basic\usart;.\Basic\rtc;.\Hardware\TOUCH_KEY;.\Hardware\TM1640;.\Hardware\ENCODER</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -524,6 +524,11 @@
               <FileName>TM1640.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Hardware\TM1640\TM1640.c</FilePath>
+            </File>
+            <File>
+              <FileName>encoder.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Hardware\ENCODER\encoder.c</FilePath>
             </File>
           </Files>
         </Group>
