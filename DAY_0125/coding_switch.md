@@ -39,17 +39,25 @@
 
 ### 【初始化函數】
 
-`GPIO_InitTypeDef  GPIO_InitStructure;`定義枚舉
-`RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA|RCC_APB2Periph_GPIOB|RCC_APB2Periph_GPIOC,ENABLE);`打開三組GPIO的時鐘源
-`GPIO_InitStructure.GPIO_Pin = ENCODER_L | ENCODER_D;`定義要初始化的腳位(PA組的兩個腳位)
-`GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;`選擇腳位為上拉電阻模式     
-`GPIO_Init(ENCODER_PORT_A,&GPIO_InitStructure);`初始化PA組腳位
+`GPIO_InitTypeDef  GPIO_InitStructure;`定義枚舉<br>
+`RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA|RCC_APB2Periph_GPIOB|RCC_APB2Periph_GPIOC,ENABLE);`打開三組GPIO的時鐘源<br>
+`GPIO_InitStructure.GPIO_Pin = ENCODER_L | ENCODER_D;`定義要初始化的腳位(PA組的兩個腳位)<br>
+`GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;`選擇腳位為上拉電阻模式<br>
+`GPIO_Init(ENCODER_PORT_A,&GPIO_InitStructure);`初始化PA組腳位<br>
 
-`GPIO_InitStructure.GPIO_Pin = ENCODER_R;`定義要初始化的腳位(PB組的腳位)                
-`GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;`選擇腳位為上拉電阻模式      
-`GPIO_Init(ENCODER_PORT_B,&GPIO_InitStructure);`初始化PB組腳位
+`GPIO_InitStructure.GPIO_Pin = ENCODER_R;`定義要初始化的腳位(PB組的腳位)<br>
+`GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;`選擇腳位為上拉電阻模式<br>
+`GPIO_Init(ENCODER_PORT_B,&GPIO_InitStructure);`初始化PB組腳位<br>
 
 ### 【狀態讀取函數】
+
+* 卡死說明
+  * 根據下方圖示可了解在旋轉過程中因為各種原因，導致讀取到標示為卡死的波型，造成程序卡在while迴圈無法正常繼續執行<br>
+  * 因此透過卡死旗標標記是否卡死，在函數最後等待放開時，設置卡死旗標，而在函數開始前先判斷電平是否為高電平(無動作狀態)，並清0卡死旗標
+
+![image](https://github.com/hamster-allen/STM32_Learn/blob/master/DAY_0125/coding_switch_picture/%E5%8D%A1%E6%AD%BB%E8%AA%AA%E6%98%8E%E5%9C%96%E7%A4%BA.png)
+
+
 
 * 全區變數
   * `u8 KUP`卡死標誌位
