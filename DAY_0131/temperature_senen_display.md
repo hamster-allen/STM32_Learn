@@ -141,6 +141,32 @@ while(NumByteToRead){
 ```
 `I2C_AcknowledgeConfig(I2C1,ENABLE);`啟動應答位<br>
 
+<br>
+
+## 溫度傳感器(LM75A)程序分析
+
+* 【定義】
+  * `#define LM75A_ADD 0x9E`溫度傳感器地址
+
+<br>
+
+* 【讀取溫度函數】`LM75A_GetTemp(u8 *Tempbuffer)`透過指針變量將數據儲存到指定的位置<br>
+
+
+
+
+
+
+* 【溫度傳感器進入掉電模式函數】`LM75A_POWERDOWN(void)`<br>
+`I2C_SAND_BYTE(LM75A_ADD,0x01,1);`在設備的設備配置暫存器設置中(0x01)寫入關閉溫度傳感器(1)<br>
+
+> 掉電模式指在讀取溫度後關閉傳感器，可以達到省電的效果，一般不常使用
+
+
+
+
+
+
 
 
 
