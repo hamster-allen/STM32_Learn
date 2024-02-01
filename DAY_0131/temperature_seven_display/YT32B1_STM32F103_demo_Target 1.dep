@@ -515,7 +515,7 @@ I (.\Lib\inc\stm32f10x_usart.h)(0x4D783BB4)
 I (.\Lib\inc\stm32f10x_wwdg.h)(0x4D783BB4)
 I (.\Lib\inc\misc.h)(0x4D783BB4)
 I (Basic\rtc\rtc.h)(0x5A60E322)
-F (.\Basic\i2c\i2c.c)(0x5A7F304A)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I.\CMSIS -I.\Lib\inc -I.\Lib\src -I.\User -I.\Startup -I.\Basic\delay -I.\Basic\sys -I.\Hardware\LED -I.\Hardware\KEY -I.\Basic\flash -I.\Hardware\BUZZER -I.\Basic\usart -I.\Basic\rtc -I.\Hardware\TOUCH_KEY -I.\Hardware\TM1640 -I.\Hardware\ENCODER -I.\Basic\i2c -I.\Hardware\LM75A -I C:\Keil\ARM\RV31\INC -I C:\Keil\ARM\CMSIS\Include -I C:\Keil\ARM\Inc\ST\STM32F10x -DUSE_STDPERIPH_DRIVER -DSTM32F10X_MD -o "i2c.o" --omf_browse "i2c.crf" --depend "i2c.d")
+F (.\Basic\i2c\i2c.c)(0x65BBCAE6)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I.\CMSIS -I.\Lib\inc -I.\Lib\src -I.\User -I.\Startup -I.\Basic\delay -I.\Basic\sys -I.\Hardware\LED -I.\Hardware\KEY -I.\Basic\flash -I.\Hardware\BUZZER -I.\Basic\usart -I.\Basic\rtc -I.\Hardware\TOUCH_KEY -I.\Hardware\TM1640 -I.\Hardware\ENCODER -I.\Basic\i2c -I.\Hardware\LM75A -I C:\Keil\ARM\RV31\INC -I C:\Keil\ARM\CMSIS\Include -I C:\Keil\ARM\Inc\ST\STM32F10x -DUSE_STDPERIPH_DRIVER -DSTM32F10X_MD -o "i2c.o" --omf_browse "i2c.crf" --depend "i2c.d")
 I (Basic\i2c\i2c.h)(0x59AAFA20)
 I (.\Basic\sys\sys.h)(0x59A2B584)
 I (.\CMSIS\stm32f10x.h)(0x4D783CB4)

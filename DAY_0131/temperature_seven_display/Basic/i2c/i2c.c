@@ -71,13 +71,15 @@ void I2C_SAND_BYTE(u8 SlaveAddr,u8 writeAddr,u8 pBuffer){ //I2C·¢ËÍÒ»¸ö×Ö½Ú£¨´Óµ
 }
 void I2C_READ_BUFFER(u8 SlaveAddr,u8 readAddr,u8* pBuffer,u16 NumByteToRead){ //I2C¶ÁÈ¡Êý¾Ý´®£¨Æ÷¼þµØÖ·£¬¼Ä´æÆ÷£¬ÄÚ²¿µØÖ·£¬ÊýÁ¿£©
 	while(I2C_GetFlagStatus(I2C1,I2C_FLAG_BUSY));
-	I2C_GenerateSTART(I2C1,ENABLE);//¿ªÆôÐÅºÅ
-	while(!I2C_CheckEvent(I2C1,I2C_EVENT_MASTER_MODE_SELECT));	//Çå³ý EV5
-	I2C_Send7bitAddress(I2C1,SlaveAddr, I2C_Direction_Transmitter); //Ð´ÈëÆ÷¼þµØÖ·
-	while(!I2C_CheckEvent(I2C1,I2C_EVENT_MASTER_TRANSMITTER_MODE_SELECTED));//Çå³ý EV6
-	I2C_Cmd(I2C1,ENABLE);
-	I2C_SendData(I2C1,readAddr); //·¢ËÍ¶ÁµÄµØÖ·
-	while(!I2C_CheckEvent(I2C1,I2C_EVENT_MASTER_BYTE_TRANSMITTED)); //Çå³ý EV8
+	
+	//I2C_GenerateSTART(I2C1,ENABLE);//¿ªÆôÐÅºÅ
+	//while(!I2C_CheckEvent(I2C1,I2C_EVENT_MASTER_MODE_SELECT));	//Çå³ý EV5
+	//I2C_Send7bitAddress(I2C1,SlaveAddr, I2C_Direction_Transmitter); //Ð´ÈëÆ÷¼þµØÖ·
+	//while(!I2C_CheckEvent(I2C1,I2C_EVENT_MASTER_TRANSMITTER_MODE_SELECTED));//Çå³ý EV6
+	//I2C_Cmd(I2C1,ENABLE);
+	//I2C_SendData(I2C1,readAddr); //·¢ËÍ¶ÁµÄµØÖ·
+	//while(!I2C_CheckEvent(I2C1,I2C_EVENT_MASTER_BYTE_TRANSMITTED)); //Çå³ý EV8
+	
 	I2C_GenerateSTART(I2C1,ENABLE); //¿ªÆôÐÅºÅ
 	while(!I2C_CheckEvent(I2C1,I2C_EVENT_MASTER_MODE_SELECT)); //Çå³ý EV5
 	I2C_Send7bitAddress(I2C1,SlaveAddr,I2C_Direction_Receiver); //½«Æ÷¼þµØÖ·´«³ö£¬Ö÷»úÎª¶Á
