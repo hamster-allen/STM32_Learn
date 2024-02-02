@@ -59,24 +59,24 @@
 
 * 【I2C發送一個字節】`I2C_SAND_BYTE(u8 SlaveAddr, u8 writeAddr, u8 pBuffer)`設備地址、設備內部暫存器地址、數據<br>
 `I2C_GenerateSTART(I2C1,ENABLE);`發送開始信號<br>
-`while(!I2C_CheckEvent(I2C1,I2C_EVENT_MASTER_MODE_SELECT));`等待完成發送開始信號<br>
+`while(!I2C_CheckEvent(I2C1,I2C_EVENT_MASTER_MODE_SELECT));`等待完成(EV5)<br>
 `I2C_Send7bitAddress(I2C1,SlaveAddr, I2C_Direction_Transmitter);`發送設備地址<br>
-`while(!I2C_CheckEvent(I2C1,I2C_EVENT_MASTER_TRANSMITTER_MODE_SELECTED));`等待完成發送設備地址<br>
+`while(!I2C_CheckEvent(I2C1,I2C_EVENT_MASTER_TRANSMITTER_MODE_SELECTED));`等待完成(EV6)<br>
 `I2C_SendData(I2C1,writeAddr);`發送設備內暫存器地址<br>
-`while(!I2C_CheckEvent(I2C1,I2C_EVENT_MASTER_BYTE_TRANSMITTED));`等待完成發送設備內暫存器地址<br>
+`while(!I2C_CheckEvent(I2C1,I2C_EVENT_MASTER_BYTE_TRANSMITTED));`等待完成(EV8)<br>
 `I2C_SendData(I2C1,pBuffer);`發送數據<br>
-`while(!I2C_CheckEvent(I2C1,I2C_EVENT_MASTER_BYTE_TRANSMITTED));`等待完成發送數據<br>
+`while(!I2C_CheckEvent(I2C1,I2C_EVENT_MASTER_BYTE_TRANSMITTED));`等待完成發送數據(EV8)<br>
 `I2C_GenerateSTOP(I2C1,ENABLE);`發送停止位<br>
 
 <br>
 
 * 【I2C發送多個數據】`I2C_SAND_BUFFER(u8 SlaveAddr, u8 WriteAddr, u8* pBuffer, u16 NumByteToWrite)`設備地址、設備內暫存器地址、指向數據指針、指針長度(數據長度)<br>
 `I2C_GenerateSTART(I2C1,ENABLE);`發送開始信號<br>
-`while(!I2C_CheckEvent(I2C1,I2C_EVENT_MASTER_MODE_SELECT));`等待完成發送開始信號<br>
+`while(!I2C_CheckEvent(I2C1,I2C_EVENT_MASTER_MODE_SELECT));`等待完成(EV5)<br>
 `I2C_Send7bitAddress(I2C1,SlaveAddr,I2C_Direction_Transmitter);`發送設備地址<br>
-`while(!I2C_CheckEvent(I2C1,I2C_EVENT_MASTER_TRANSMITTER_MODE_SELECTED));`等待完成發送設備地址<br>
+`while(!I2C_CheckEvent(I2C1,I2C_EVENT_MASTER_TRANSMITTER_MODE_SELECTED));`等待完成(EV6)<br>
 `I2C_SendData(I2C1,WriteAddr);`發送設備內暫存器地址<br>
-`while(!I2C_CheckEvent(I2C1,I2C_EVENT_MASTER_BYTE_TRANSMITTED));`等待完成發送設備內暫存器地址<br>
+`while(!I2C_CheckEvent(I2C1,I2C_EVENT_MASTER_BYTE_TRANSMITTED));`等待完成(EV8)<br>
 ```
 連續發送數據，並在每次發送後等待發送完畢
 while(NumByteToWrite--){                                            //持續發送數據直到NumByteToWrite為0
@@ -92,39 +92,44 @@ while(NumByteToWrite--){                                            //持續發�
 * 【I2C讀取一個字節】`I2C_READ_BYTE(u8 SlaveAddr, u8 readAddr)`讀取的設備地址、讀取設備的暫存器地址<br>
 `u8 a;`接收數據的8位元變數<br>
 `while(I2C_GetFlagStatus(I2C1,I2C_FLAG_BUSY));`等待總線不為Busy狀態<br>
-`I2C_GenerateSTART(I2C1,ENABLE);`發送開始信號<br>
-`while(!I2C_CheckEvent(I2C1,I2C_EVENT_MASTER_MODE_SELECT));`等待完成發送開始信號<br>
-`I2C_Send7bitAddress(I2C1,SlaveAddr, I2C_Direction_Transmitter);`發送設備地址<br>
-`while(!I2C_CheckEvent(I2C1,I2C_EVENT_MASTER_TRANSMITTER_MODE_SELECTED));`等待完成發送設備地址<br>
-`I2C_Cmd(I2C1,ENABLE);`啟用I2C外設<br>
-`I2C_SendData(I2C1,readAddr);`發送設備暫存器地址<br>
-`while(!I2C_CheckEvent(I2C1,I2C_EVENT_MASTER_BYTE_TRANSMITTED));`等待完成發送設備暫存器地址<br>
-`I2C_GenerateSTART(I2C1,ENABLE);`允許I2C的設備發出開始信號<br>
-`while(!I2C_CheckEvent(I2C1,I2C_EVENT_MASTER_MODE_SELECT));`等待設備發出開始信號<br>
-`I2C_Send7bitAddress(I2C1,SlaveAddr, I2C_Direction_Receiver);`再次發送設備地址<br>
-`while(!I2C_CheckEvent(I2C1,I2C_EVENT_MASTER_RECEIVER_MODE_SELECTED));`等待完成發送設備內暫存器地址，等待接收數據<br>
+```
+//經過測試就算沒有這段也可以正常讀取，不過網路上範例都有這一段
+while(I2C_GetFlagStatus(I2C1,I2C_FLAG_BUSY));                             //等待總線不為Busy狀態
+I2C_GenerateSTART(I2C1,ENABLE);                                           //發送開始信號
+while(!I2C_CheckEvent(I2C1,I2C_EVENT_MASTER_MODE_SELECT));                //等待完成發送開始信號
+I2C_Send7bitAddress(I2C1,SlaveAddr, I2C_Direction_Transmitter);           //發送設備地址
+while(!I2C_CheckEvent(I2C1,I2C_EVENT_MASTER_TRANSMITTER_MODE_SELECTED));  //等待完成發送設備地址
+I2C_Cmd(I2C1,ENABLE);                                                     //啟動I2C外設
+I2C_SendData(I2C1,readAddr);                                              //發送設備暫存器地址
+while(!I2C_CheckEvent(I2C1,I2C_EVENT_MASTER_BYTE_TRANSMITTED));           //等待完成發送設備暫存器地址
+```
+`I2C_GenerateSTART(I2C1,ENABLE);`發出開始信號<br>
+`while(!I2C_CheckEvent(I2C1,I2C_EVENT_MASTER_MODE_SELECT));`等待完成(EV5)<br>
+`I2C_Send7bitAddress(I2C1,SlaveAddr, I2C_Direction_Receiver);`發送設備地址，最後一位改為讀取狀態(I2C_Direction_Receiver)<br>
+`while(!I2C_CheckEvent(I2C1,I2C_EVENT_MASTER_RECEIVER_MODE_SELECTED));`等待完成，等待接收數據(EV6)<br>
 `I2C_AcknowledgeConfig(I2C1,DISABLE);`在接收最後一個數據時，關閉應答位<br>
-`I2C_GenerateSTOP(I2C1,ENABLE);`發送停止位，表示通信結束<br>
+`I2C_GenerateSTOP(I2C1,ENABLE);`發送停止位，表示讀取通信結束<br>
 `a = I2C_ReceiveData(I2C1);`將I2C暫存器接收到的數據移動到自訂的8位元變數<br>
 `return a;`從函數回傳數據<br>
 
-
-
 <br>
 
-* 【I2C取數多個據串】`I2C_READ_BUFFER(u8 SlaveAddr,u8 readAddr,u8* pBuffer,u16 NumByteToRead)`讀取的設備地址、讀取設備的暫存器地址、讀取的資料(指針)、指針長度<br>
+* 【I2C讀取數多個據串】`I2C_READ_BUFFER(u8 SlaveAddr,u8 readAddr,u8* pBuffer,u16 NumByteToRead)`讀取的設備地址、讀取設備的暫存器地址、讀取的資料(指針)、指針長度<br>
 `while(I2C_GetFlagStatus(I2C1,I2C_FLAG_BUSY));`等待總線不為Busy狀態<br>
-`I2C_GenerateSTART(I2C1,ENABLE);`發送開始信號<br>
-`while(!I2C_CheckEvent(I2C1,I2C_EVENT_MASTER_MODE_SELECT));`等待完成發送開始信號<br>
-`I2C_Send7bitAddress(I2C1,SlaveAddr, I2C_Direction_Transmitter);`發送設備地址<br>
-`while(!I2C_CheckEvent(I2C1,I2C_EVENT_MASTER_TRANSMITTER_MODE_SELECTED));`等待完成發送設備地址<br>
-`I2C_Cmd(I2C1,ENABLE);`啟動I2C外設<br>
-`I2C_SendData(I2C1,readAddr);`發送設備暫存器地址<br>
-`while(!I2C_CheckEvent(I2C1,I2C_EVENT_MASTER_BYTE_TRANSMITTED));`等待完成發送設備暫存器地址<br>
-`I2C_GenerateSTART(I2C1,ENABLE);`允許I2C的設備發出開始信號<br>
-`while(!I2C_CheckEvent(I2C1,I2C_EVENT_MASTER_MODE_SELECT));`等待設備發出開始信號<br>
-`I2C_Send7bitAddress(I2C1,SlaveAddr,I2C_Direction_Receiver);`再次發送設備地址<br>
-`while(!I2C_CheckEvent(I2C1,I2C_EVENT_MASTER_RECEIVER_MODE_SELECTED));`等待完成發送設備內暫存器地址，等待接收數據<br>
+```
+//經過測試就算沒有這段也可以正常讀取，不過網路上範例都有這一段
+I2C_GenerateSTART(I2C1,ENABLE);                                           //發送開始信號
+while(!I2C_CheckEvent(I2C1,I2C_EVENT_MASTER_MODE_SELECT));                //等待完成發送開始信號
+I2C_Send7bitAddress(I2C1,SlaveAddr, I2C_Direction_Transmitter);           //發送設備地址
+while(!I2C_CheckEvent(I2C1,I2C_EVENT_MASTER_TRANSMITTER_MODE_SELECTED));  //等待完成發送設備地址
+I2C_Cmd(I2C1,ENABLE);                                                     //啟動I2C外設
+I2C_SendData(I2C1,readAddr);                                              //發送設備暫存器地址
+while(!I2C_CheckEvent(I2C1,I2C_EVENT_MASTER_BYTE_TRANSMITTED));           //等待完成發送設備暫存器地址
+```
+`I2C_GenerateSTART(I2C1,ENABLE);`發出開始信號<br>
+`while(!I2C_CheckEvent(I2C1,I2C_EVENT_MASTER_MODE_SELECT));`等待完成(EV5)<br>
+`I2C_Send7bitAddress(I2C1,SlaveAddr, I2C_Direction_Receiver);`發送設備地址，最後一位改為讀取狀態(I2C_Direction_Receiver)<br>
+`while(!I2C_CheckEvent(I2C1,I2C_EVENT_MASTER_RECEIVER_MODE_SELECTED));`等待完成，等待接收數據(EV6)<br>
 ```
 連續讀取數據
 while(NumByteToRead){
@@ -140,6 +145,47 @@ while(NumByteToRead){
 }
 ```
 `I2C_AcknowledgeConfig(I2C1,ENABLE);`啟動應答位<br>
+
+<br>
+
+> 上述所有EVx等旗標詳情查看下方【發送和接收之旗標】
+
+<br>
+
+## 發送和接收之旗標
+
+* 【主發送序列圖】
+
+![image](https://github.com/hamster-allen/STM32_Learn/blob/master/DAY_0131/temperature_seven_display_picture/I2C%E4%B8%BB%E7%99%BC%E9%80%81%E5%82%B3%E9%80%81%E5%BA%8F%E5%88%97%E5%9C%96.png)
+
+* 【主接收序列圖】
+
+![image](https://github.com/hamster-allen/STM32_Learn/blob/master/DAY_0131/temperature_seven_display_picture/I2C%E4%B8%BB%E6%8E%A5%E6%94%B6%E5%82%B3%E9%80%81%E5%BA%8F%E5%88%97%E5%9C%96.png)
+
+* 【I2C_Event值列表】
+
+|IC2_Event|值|
+|:---:|:---:|
+|I2C_EVENT_SLAVE_RECEIVER_ADDRESS_MATCHED|EV1|
+|I2C_EVENT_SLAVE_TRANSMITTER_ADDRESS_MATCHED|EV1|
+|I2C_EVENT_SLAVE_RECEIVER_SECONDADDRESS_MATCHED|EV1|
+|I2C_EVENT_SLAVE_TRANSMITTER_SECONDADDRESS_MATCHED|EV1|
+|I2C_EVENT_SLAVE_GENERALCALLADDRESS_MATCHED|EV1|
+|I2C_EVENT_SLAVE_BYTE_RECEIVED|EV2|
+|I2C_EVENT_SLAVE_BYTE_TRANSMITTED|EV3|
+|I2C_EVENT_SLAVE_ACK_FAILURE|EV3-1|
+|I2C_EVENT_SLAVE_STOP_DETECTED|EV4|
+|I2C_EVENT_MASTER_MODE_SELECT|EV5|
+|I2C_EVENT_MASTER_RECEIVER_MODE_SELECTED|EV6|
+|I2C_EVENT_MASTER_TRANSMITTER_MODE_SELECTED|EV6|
+|I2C_EVENT_MASTER_BYTE_RECEIVED|EV7|
+|I2C_EVENT_MASTER_BYTE_TRANSMITTED|EV8|
+|I2C_EVENT_MASTER_MODE_ADDRESS10|EV9|
+
+> 詳情閱讀下列文件<br>
+> 序列圖 -> [溫度傳感器相關數據資料/STM32F10XXX參考手冊(P.497)](https://github.com/hamster-allen/STM32_Learn/blob/master/DAY_0131/%E6%BA%AB%E5%BA%A6%E5%82%B3%E6%84%9F%E5%99%A8%E7%9B%B8%E9%97%9C%E6%95%B8%E6%93%9A%E8%B3%87%E6%96%99/STM32F10XXX%E5%8F%82%E8%80%83%E6%89%8B%E5%86%8C%EF%BC%88%E4%B8%AD%E6%96%87%EF%BC%89-20150727-CD00171190_ZHV10.pdf)<br>
+> I2C_Event值列表 -> [溫度傳感器相關數據資料/I2C總線規範(P.151)](https://github.com/hamster-allen/STM32_Learn/blob/master/DAY_0131/%E6%BA%AB%E5%BA%A6%E5%82%B3%E6%84%9F%E5%99%A8%E7%9B%B8%E9%97%9C%E6%95%B8%E6%93%9A%E8%B3%87%E6%96%99/STM32F10XXX%E5%8F%82%E8%80%83%E6%89%8B%E5%86%8C%EF%BC%88%E4%B8%AD%E6%96%87%EF%BC%89-20150727-CD00171190_ZHV10.pdf)<br>
+
 
 <br>
 
