@@ -345,7 +345,7 @@
               <MiscControls></MiscControls>
               <Define>USE_STDPERIPH_DRIVER,STM32F10X_MD</Define>
               <Undefine></Undefine>
-              <IncludePath>.\CMSIS;.\Lib\inc;.\Lib\src;.\User;.\Startup;.\Basic\delay;.\Basic\sys;.\Hardware\LED;.\Hardware\KEY;.\Basic\flash;.\Hardware\BUZZER;.\Basic\usart;.\Basic\rtc;.\Hardware\TOUCH_KEY;.\Hardware\TM1640;.\Hardware\ENCODER</IncludePath>
+              <IncludePath>.\CMSIS;.\Lib\inc;.\Lib\src;.\User;.\Startup;.\Basic\delay;.\Basic\sys;.\Hardware\LED;.\Hardware\KEY;.\Basic\flash;.\Hardware\BUZZER;.\Basic\usart;.\Basic\rtc;.\Hardware\TOUCH_KEY;.\Hardware\TM1640;.\Hardware\ENCODER;.\Basic\i2c;.\Hardware\LM75A</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
