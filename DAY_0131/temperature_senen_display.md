@@ -151,6 +151,18 @@ while(NumByteToRead){
 
 <br>
 
+## LM75A讀操作時序圖
+
+* 注意
+  * 每個從裝置的讀操作不盡相同，需要閱讀相關手冊
+  * 使用基本的I2C時序一定可以讀取
+
+a. 基本I2C時序讀取<br>
+b. 在基本I2C時序前先發送一次裝置地址與暫存器地址<br>
+c. 僅讀取1Byte<br>
+
+![image](https://github.com/hamster-allen/STM32_Learn/blob/master/DAY_0131/temperature_seven_display_picture/LM75A%E8%AE%80%E6%93%8D%E4%BD%9C.png)
+
 ## 發送和接收之旗標
 
 * 【主發送序列圖】
