@@ -19,9 +19,13 @@
     * 一般 -> 8x16
     * 最小 -> 8x8
 
+<br>
 
+## 電路原理圖
 
+![image](https://github.com/hamster-allen/STM32_Learn/blob/master/DAY_0203/temperature_oled_picture/OLED%E9%9B%BB%E8%B7%AF%E5%8E%9F%E7%90%86%E5%9C%96.png)
 
+<br>
 
 
 
