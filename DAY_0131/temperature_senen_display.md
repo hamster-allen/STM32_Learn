@@ -93,7 +93,7 @@ while(NumByteToWrite--){                                            //持續發�
 `u8 a;`接收數據的8位元變數<br>
 `while(I2C_GetFlagStatus(I2C1,I2C_FLAG_BUSY));`等待總線不為Busy狀態<br>
 ```
-//經過測試就算沒有這段也可以正常讀取，不過網路上範例都有這一段
+//根據【LM75A數據手冊】加入這段在基本的I2C讀取程序上依舊可以讀取數據
 I2C_GenerateSTART(I2C1,ENABLE);                                           //發送開始信號
 while(!I2C_CheckEvent(I2C1,I2C_EVENT_MASTER_MODE_SELECT));                //等待完成發送開始信號
 I2C_Send7bitAddress(I2C1,SlaveAddr, I2C_Direction_Transmitter);           //發送設備地址
