@@ -1,13 +1,13 @@
 <!doctype html public "-//w3c//dtd html 4.0 transitional//en">
 <html><head>
-<title>Static Call Graph - [D:\Code\stm32\DAY_0202\temperature_oled\YT32B1_STM32F103_demo.axf]</title></head>
+<title>Static Call Graph - [D:\Code\stm32\DAY_0203\temperature_oled\YT32B1_STM32F103_demo.axf]</title></head>
 <body><HR>
-<H1>Static Call Graph for image D:\Code\stm32\DAY_0202\temperature_oled\YT32B1_STM32F103_demo.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5.02 [Build 28]: Last Updated: Sat Feb 03 18:05:34 2024
+<H1>Static Call Graph for image D:\Code\stm32\DAY_0203\temperature_oled\YT32B1_STM32F103_demo.axf</H1><HR>
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5.02 [Build 28]: Last Updated: Mon Feb 05 00:54:40 2024
 <BR><P>
-<H3>Maximum Stack Usage =        320 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =        416 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
-_printf_f &rArr; _printf_fp_dec &rArr; _printf_fp_dec_real &rArr; _fp_digits &rArr; _btod_etento &rArr; _btod_emul &rArr; _e2e
+__rt_entry_main &rArr; main &rArr; OLED_DISPLAY_8x16_BUFFER &rArr; OLED_DISPLAY_8x16 &rArr; USART1_printf &rArr; __c89vsnprintf &rArr; _printf_char_common &rArr; __printf
 <P>
 <H3>
 Functions with no stack information
@@ -354,8 +354,8 @@ Global Symbols
 <P><STRONG><a name="[12a]"></a>__rt_entry_postsh_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, rtentry2.o(.ARM.Collect$$rtentry$$00000009))
 
 <P><STRONG><a name="[6d]"></a>__rt_entry_main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, rtentry2.o(.ARM.Collect$$rtentry$$0000000D))
-<BR><BR>[Stack]<UL><LI>Max Depth = 92 + Unknown Stack Size
-<LI>Call Chain = __rt_entry_main &rArr; main &rArr; I2C_Configuration &rArr; I2C_Init &rArr; RCC_GetClocksFreq
+<BR><BR>[Stack]<UL><LI>Max Depth = 416 + Unknown Stack Size
+<LI>Call Chain = __rt_entry_main &rArr; main &rArr; OLED_DISPLAY_8x16_BUFFER &rArr; OLED_DISPLAY_8x16 &rArr; USART1_printf &rArr; __c89vsnprintf &rArr; _printf_char_common &rArr; __printf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exit
@@ -390,8 +390,10 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_Configuration
 </UL>
 
-<P><STRONG><a name="[b5]"></a>NVIC_Init</STRONG> (Thumb, 102 bytes, Stack size 16 bytes, misc.o(.text), UNUSED)
-<BR><BR>[Called By]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART1_Init
+<P><STRONG><a name="[b5]"></a>NVIC_Init</STRONG> (Thumb, 102 bytes, Stack size 16 bytes, misc.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = NVIC_Init
+</UL>
+<BR>[Called By]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART1_Init
 </UL>
 
 <P><STRONG><a name="[12e]"></a>NVIC_SetVectorTable</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, misc.o(.text), UNUSED)
@@ -575,8 +577,10 @@ Global Symbols
 <LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphResetCmd
 </UL>
 
-<P><STRONG><a name="[7d]"></a>USART_Init</STRONG> (Thumb, 210 bytes, Stack size 56 bytes, stm32f10x_usart.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_GetClocksFreq
+<P><STRONG><a name="[7d]"></a>USART_Init</STRONG> (Thumb, 210 bytes, Stack size 56 bytes, stm32f10x_usart.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 68<LI>Call Chain = USART_Init &rArr; RCC_GetClocksFreq
+</UL>
+<BR>[Calls]<UL><LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_GetClocksFreq
 </UL>
 <BR>[Called By]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART1_Init
 </UL>
@@ -587,12 +591,14 @@ Global Symbols
 
 <P><STRONG><a name="[14d]"></a>USART_ClockStructInit</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, stm32f10x_usart.o(.text), UNUSED)
 
-<P><STRONG><a name="[b7]"></a>USART_Cmd</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, stm32f10x_usart.o(.text), UNUSED)
+<P><STRONG><a name="[b7]"></a>USART_Cmd</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, stm32f10x_usart.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART1_Init
 </UL>
 
-<P><STRONG><a name="[b6]"></a>USART_ITConfig</STRONG> (Thumb, 74 bytes, Stack size 20 bytes, stm32f10x_usart.o(.text), UNUSED)
-<BR><BR>[Called By]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART1_Init
+<P><STRONG><a name="[b6]"></a>USART_ITConfig</STRONG> (Thumb, 74 bytes, Stack size 20 bytes, stm32f10x_usart.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = USART_ITConfig
+</UL>
+<BR>[Called By]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART1_Init
 </UL>
 
 <P><STRONG><a name="[14e]"></a>USART_DMACmd</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, stm32f10x_usart.o(.text), UNUSED)
@@ -607,7 +613,7 @@ Global Symbols
 
 <P><STRONG><a name="[153]"></a>USART_LINCmd</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, stm32f10x_usart.o(.text), UNUSED)
 
-<P><STRONG><a name="[af]"></a>USART_SendData</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, stm32f10x_usart.o(.text), UNUSED)
+<P><STRONG><a name="[af]"></a>USART_SendData</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, stm32f10x_usart.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART1_printf
 </UL>
 
@@ -635,7 +641,7 @@ Global Symbols
 
 <P><STRONG><a name="[15d]"></a>USART_IrDACmd</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, stm32f10x_usart.o(.text), UNUSED)
 
-<P><STRONG><a name="[b0]"></a>USART_GetFlagStatus</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, stm32f10x_usart.o(.text), UNUSED)
+<P><STRONG><a name="[b0]"></a>USART_GetFlagStatus</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, stm32f10x_usart.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART1_printf
 </UL>
 
@@ -1117,7 +1123,8 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[6e]"></a>main</STRONG> (Thumb, 198 bytes, Stack size 8 bytes, main.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 92<LI>Call Chain = main &rArr; I2C_Configuration &rArr; I2C_Init &rArr; RCC_GetClocksFreq
+<BR><BR>[Stack]<UL><LI>Max Depth = 416 + Unknown Stack Size
+<LI>Call Chain = main &rArr; OLED_DISPLAY_8x16_BUFFER &rArr; OLED_DISPLAY_8x16 &rArr; USART1_printf &rArr; __c89vsnprintf &rArr; _printf_char_common &rArr; __printf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
 <LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_Configuration
@@ -1205,20 +1212,29 @@ Global Symbols
 <P><STRONG><a name="[3d]"></a>fputc</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, usart.o(.text))
 <BR>[Address Reference Count : 1]<UL><LI> _printf_char_file.o(.text)
 </UL>
-<P><STRONG><a name="[ad]"></a>USART1_printf</STRONG> (Thumb, 82 bytes, Stack size 232 bytes, usart.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_GetFlagStatus
+<P><STRONG><a name="[ad]"></a>USART1_printf</STRONG> (Thumb, 82 bytes, Stack size 232 bytes, usart.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 360 + Unknown Stack Size
+<LI>Call Chain = USART1_printf &rArr; __c89vsnprintf &rArr; _printf_char_common &rArr; __printf
+</UL>
+<BR>[Calls]<UL><LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_GetFlagStatus
 <LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_SendData
 <LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strlen
 <LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__c89vsnprintf
 </UL>
+<BR>[Called By]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_DISPLAY_8x16
+</UL>
 
-<P><STRONG><a name="[b2]"></a>USART1_Init</STRONG> (Thumb, 152 bytes, Stack size 32 bytes, usart.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_ITConfig
+<P><STRONG><a name="[b2]"></a>USART1_Init</STRONG> (Thumb, 152 bytes, Stack size 32 bytes, usart.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 100<LI>Call Chain = USART1_Init &rArr; USART_Init &rArr; RCC_GetClocksFreq
+</UL>
+<BR>[Calls]<UL><LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_ITConfig
 <LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Cmd
 <LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Init
 <LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphClockCmd
 <LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
 <LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_Init
+</UL>
+<BR>[Called By]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED0561_Init
 </UL>
 
 <P><STRONG><a name="[33]"></a>USART1_IRQHandler</STRONG> (Thumb, 132 bytes, Stack size 8 bytes, usart.o(.text))
@@ -1340,10 +1356,10 @@ Global Symbols
 <LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_GenerateSTOP
 <LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_GenerateSTART
 </UL>
-<BR>[Called By]<UL><LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_DISPLAY_LIT
+<BR>[Called By]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_DISPLAY_8x16
+<LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_DISPLAY_LIT
 <LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_DISPLAY_CLEAR
 <LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LM75A_POWERDOWN
-<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_DISPLAY_8x16
 </UL>
 
 <P><STRONG><a name="[d7]"></a>I2C_READ_BUFFER</STRONG> (Thumb, 140 bytes, Stack size 24 bytes, i2c.o(.text))
@@ -1409,10 +1425,11 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED0561_Init
 </UL>
 
-<P><STRONG><a name="[9b]"></a>OLED0561_Init</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, oled0561.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = OLED0561_Init &rArr; OLED_DISPLAY_ON &rArr; I2C_SAND_BUFFER &rArr; I2C_CheckEvent
+<P><STRONG><a name="[9b]"></a>OLED0561_Init</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, oled0561.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 108<LI>Call Chain = OLED0561_Init &rArr; USART1_Init &rArr; USART_Init &rArr; RCC_GetClocksFreq
 </UL>
-<BR>[Calls]<UL><LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_DISPLAY_OFF
+<BR>[Calls]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART1_Init
+<LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_DISPLAY_OFF
 <LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_DISPLAY_CLEAR
 <LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_DISPLAY_ON
 </UL>
@@ -1423,17 +1440,20 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_SAND_BYTE
 </UL>
 
-<P><STRONG><a name="[9d]"></a>OLED_DISPLAY_8x16</STRONG> (Thumb, 150 bytes, Stack size 32 bytes, oled0561.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = OLED_DISPLAY_8x16 &rArr; I2C_SAND_BYTE &rArr; I2C_CheckEvent
+<P><STRONG><a name="[9d]"></a>OLED_DISPLAY_8x16</STRONG> (Thumb, 202 bytes, Stack size 32 bytes, oled0561.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 392 + Unknown Stack Size
+<LI>Call Chain = OLED_DISPLAY_8x16 &rArr; USART1_printf &rArr; __c89vsnprintf &rArr; _printf_char_common &rArr; __printf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_SAND_BYTE
+<LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART1_printf
 </UL>
 <BR>[Called By]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_DISPLAY_8x16_BUFFER
 <LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
 <P><STRONG><a name="[9c]"></a>OLED_DISPLAY_8x16_BUFFER</STRONG> (Thumb, 36 bytes, Stack size 16 bytes, oled0561.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = OLED_DISPLAY_8x16_BUFFER &rArr; OLED_DISPLAY_8x16 &rArr; I2C_SAND_BYTE &rArr; I2C_CheckEvent
+<BR><BR>[Stack]<UL><LI>Max Depth = 408 + Unknown Stack Size
+<LI>Call Chain = OLED_DISPLAY_8x16_BUFFER &rArr; OLED_DISPLAY_8x16 &rArr; USART1_printf &rArr; __c89vsnprintf &rArr; _printf_char_common &rArr; __printf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_DISPLAY_8x16
 </UL>
@@ -1442,8 +1462,11 @@ Global Symbols
 
 <P><STRONG><a name="[196]"></a>__use_no_semihosting</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, use_no_semi_2.o(.text), UNUSED)
 
-<P><STRONG><a name="[ae]"></a>__c89vsnprintf</STRONG> (Thumb, 48 bytes, Stack size 24 bytes, c89vsnprintf.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_sputc
+<P><STRONG><a name="[ae]"></a>__c89vsnprintf</STRONG> (Thumb, 48 bytes, Stack size 24 bytes, c89vsnprintf.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 128 + Unknown Stack Size
+<LI>Call Chain = __c89vsnprintf &rArr; _printf_char_common &rArr; __printf
+</UL>
+<BR>[Calls]<UL><LI><a href="#[e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_sputc
 <LI><a href="#[e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_char_common
 </UL>
 <BR>[Called By]<UL><LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART1_printf
@@ -1477,8 +1500,10 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_char_common
 </UL>
 
-<P><STRONG><a name="[b1]"></a>strlen</STRONG> (Thumb, 62 bytes, Stack size 8 bytes, strlen.o(.text), UNUSED)
-<BR><BR>[Called By]<UL><LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART1_printf
+<P><STRONG><a name="[b1]"></a>strlen</STRONG> (Thumb, 62 bytes, Stack size 8 bytes, strlen.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = strlen
+</UL>
+<BR>[Called By]<UL><LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART1_printf
 </UL>
 
 <P><STRONG><a name="[de]"></a>__aeabi_memcpy4</STRONG> (Thumb, 0 bytes, Stack size 8 bytes, rt_memcpy_w.o(.text))
@@ -1559,7 +1584,7 @@ Global Symbols
 <LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__c89vsnprintf
 </UL>
 
-<P><STRONG><a name="[e3]"></a>_sputc</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, _sputc.o(.text), UNUSED)
+<P><STRONG><a name="[e3]"></a>_sputc</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, _sputc.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__c89vsnprintf
 </UL>
 

@@ -1,5 +1,9 @@
 oled0561.o: Hardware\OLED0561\oled0561.c
-oled0561.o: Hardware\OLED0561\oled0561.h
+oled0561.o: .\Basic\usart\usart.h
+oled0561.o: C:\Keil\ARM\ARMCC\bin\..\include\stdarg.h
+oled0561.o: C:\Keil\ARM\ARMCC\bin\..\include\stdlib.h
+oled0561.o: C:\Keil\ARM\ARMCC\bin\..\include\string.h
+oled0561.o: C:\Keil\ARM\ARMCC\bin\..\include\stdio.h
 oled0561.o: .\Basic\sys\sys.h
 oled0561.o: .\CMSIS\stm32f10x.h
 oled0561.o: .\CMSIS\core_cm3.h
@@ -30,5 +34,6 @@ oled0561.o: .\Lib\inc\stm32f10x_tim.h
 oled0561.o: .\Lib\inc\stm32f10x_usart.h
 oled0561.o: .\Lib\inc\stm32f10x_wwdg.h
 oled0561.o: .\Lib\inc\misc.h
+oled0561.o: Hardware\OLED0561\oled0561.h
 oled0561.o: .\Basic\i2c\i2c.h
 oled0561.o: Hardware\OLED0561\ASCII_8x16.h

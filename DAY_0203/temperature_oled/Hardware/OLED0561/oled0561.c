@@ -18,7 +18,7 @@
 
 
 
-
+#include "usart.h"
 #include "oled0561.h"
 #include "ASCII_8x16.h" //引入字体 ASCII
 
@@ -27,12 +27,12 @@ void OLED0561_Init (void){//OLED屏开显示初始化
 	OLED_DISPLAY_OFF(); //OLED关显示
 	OLED_DISPLAY_CLEAR(); //清空屏幕内容
 	OLED_DISPLAY_ON(); //OLED屏初始值设置并开显示
-
+	USART1_Init(115200);
 }
 void OLED_DISPLAY_ON (void){//OLED屏初始值设置并开显示
 	u8 buf[28]={
 	0xae,//0xae:关显示，0xaf:开显示
-    0x00,0x10,//开始地址（双字节）       
+  0x00,0x10,//开始地址（双字节）       
 	0xd5,0x80,//显示时钟频率？
 	0xa8,0x3f,//复用率？
 	0xd3,0x00,//显示偏移？
@@ -78,14 +78,18 @@ void OLED_DISPLAY_CLEAR(void){//清屏操作
 //显示英文与数字8*16的ASCII码
 //取模大小为16*16，取模方式为“从左到右从上到下”“纵向8点下高位”
 void OLED_DISPLAY_8x16(u8 x, //显示汉字的页坐标（从0到7）（此处不可修改）
-						u8 y, //显示汉字的列坐标（从0到63）
+						u8 y, //显示汉字的列坐标（从0到128）
 						u16 w){ //要显示汉字的编号
 	u8 j,t,c=0;
 	y=y+2; //因OLED屏的内置驱动芯片是从0x02列作为屏上最左一列，所以要加上偏移量
 	for(t=0;t<2;t++){
-		I2C_SAND_BYTE(OLED0561_ADD,COM,0xb0+x); //页地址（从0xB0到0xB7）
+		I2C_SAND_BYTE(OLED0561_ADD,COM,0xb0+x); //页地址（从0xB0到0xB7
+		USART1_printf("=======================\n");
+		USART1_printf("0xb0+x: %x\n", 0xb0+x);
 		I2C_SAND_BYTE(OLED0561_ADD,COM,y/16+0x10); //起始列地址的高4位
+		USART1_printf("高4位: %x\n", y/16+0x10);
 		I2C_SAND_BYTE(OLED0561_ADD,COM,y%16);	//起始列地址的低4位
+		USART1_printf("低4位: %x\n", y%16);
 		for(j=0;j<8;j++){ //整页内容填充
  			I2C_SAND_BYTE(OLED0561_ADD,DAT,ASCII_8x16[(w*16)+c-512]);//为了和ASII表对应要减512
 			c++;}x++; //页地址加1
