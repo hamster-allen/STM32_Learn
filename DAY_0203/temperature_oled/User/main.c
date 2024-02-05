@@ -37,12 +37,12 @@ int main (void){//主程序
 	while(1){
 		LM75A_GetTemp(buffer); //读取LM75A的温度数据
 			
-		//if(buffer[0])OLED_DISPLAY_8x16(6,7*8,'-'); //如果第1组为1即是负温度
-		//OLED_DISPLAY_8x16(6,8*8,buffer[1]/10+0x30);//显示温度值
-		//OLED_DISPLAY_8x16(6,9*8,buffer[1]%10+0x30);//
-		//OLED_DISPLAY_8x16(6,10*8,'.');//
-		//OLED_DISPLAY_8x16(6,11*8,buffer[2]/10+0x30);//
-		//OLED_DISPLAY_8x16(6,12*8,buffer[2]%10+0x30);//
+		if(buffer[0])OLED_DISPLAY_8x16(6,7*8,'-'); //如果第1组为1即是负温度
+		OLED_DISPLAY_8x16(6,8*8,buffer[1]/10+0x30);//显示温度值
+		OLED_DISPLAY_8x16(6,9*8,buffer[1]%10+0x30);//
+		OLED_DISPLAY_8x16(6,10*8,'.');//
+		OLED_DISPLAY_8x16(6,11*8,buffer[2]/10+0x30);//
+		OLED_DISPLAY_8x16(6,12*8,buffer[2]%10+0x30);//
 		OLED_DISPLAY_8x16(6,13*8,'C');//
 
 		delay_ms(200); //延时
