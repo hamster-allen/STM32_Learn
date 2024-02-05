@@ -3,7 +3,7 @@ flash.o: Basic\flash\flash.h
 flash.o: .\Basic\sys\sys.h
 flash.o: .\CMSIS\stm32f10x.h
 flash.o: .\CMSIS\core_cm3.h
-flash.o: C:\Keil\ARM\RV31\INC\stdint.h
+flash.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
 flash.o: .\CMSIS\system_stm32f10x.h
 flash.o: .\User\stm32f10x_conf.h
 flash.o: .\Lib\inc\stm32f10x_adc.h

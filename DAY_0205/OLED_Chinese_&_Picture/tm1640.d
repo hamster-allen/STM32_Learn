@@ -3,7 +3,7 @@ tm1640.o: Hardware\TM1640\TM1640.h
 tm1640.o: .\Basic\sys\sys.h
 tm1640.o: .\CMSIS\stm32f10x.h
 tm1640.o: .\CMSIS\core_cm3.h
-tm1640.o: C:\Keil\ARM\RV31\INC\stdint.h
+tm1640.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
 tm1640.o: .\CMSIS\system_stm32f10x.h
 tm1640.o: .\User\stm32f10x_conf.h
 tm1640.o: .\Lib\inc\stm32f10x_adc.h

@@ -3,7 +3,7 @@ lm75a.o: Hardware\LM75A\lm75a.h
 lm75a.o: .\Basic\sys\sys.h
 lm75a.o: .\CMSIS\stm32f10x.h
 lm75a.o: .\CMSIS\core_cm3.h
-lm75a.o: C:\Keil\ARM\RV31\INC\stdint.h
+lm75a.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
 lm75a.o: .\CMSIS\system_stm32f10x.h
 lm75a.o: .\User\stm32f10x_conf.h
 lm75a.o: .\Lib\inc\stm32f10x_adc.h

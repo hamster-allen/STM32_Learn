@@ -33,7 +33,7 @@ int main (void){//主程序
 	OLED_DISPLAY_LIT(100);//亮度设置
 
 	OLED_DISPLAY_PIC1();//显示全屏图片
-	delay_ms(1000); //延时
+	delay_ms(3000); //延时
 	OLED_DISPLAY_CLEAR();
 	OLED_DISPLAY_8x16_BUFFER(0,"   YoungTalk "); //显示字符串
 	OLED_DISPLAY_8x16_BUFFER(6,"  Temp:"); //显示字符串

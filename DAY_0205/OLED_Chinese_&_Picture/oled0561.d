@@ -3,7 +3,7 @@ oled0561.o: Hardware\OLED0561\oled0561.h
 oled0561.o: .\Basic\sys\sys.h
 oled0561.o: .\CMSIS\stm32f10x.h
 oled0561.o: .\CMSIS\core_cm3.h
-oled0561.o: C:\Keil\ARM\RV31\INC\stdint.h
+oled0561.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
 oled0561.o: .\CMSIS\system_stm32f10x.h
 oled0561.o: .\User\stm32f10x_conf.h
 oled0561.o: .\Lib\inc\stm32f10x_adc.h

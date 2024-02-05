@@ -3,7 +3,7 @@ buzzer.o: Hardware\BUZZER\buzzer.h
 buzzer.o: .\Basic\sys\sys.h
 buzzer.o: .\CMSIS\stm32f10x.h
 buzzer.o: .\CMSIS\core_cm3.h
-buzzer.o: C:\Keil\ARM\RV31\INC\stdint.h
+buzzer.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
 buzzer.o: .\CMSIS\system_stm32f10x.h
 buzzer.o: .\User\stm32f10x_conf.h
 buzzer.o: .\Lib\inc\stm32f10x_adc.h
