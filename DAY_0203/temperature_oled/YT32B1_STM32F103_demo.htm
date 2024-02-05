@@ -3,7 +3,7 @@
 <title>Static Call Graph - [D:\Code\stm32\DAY_0203\temperature_oled\YT32B1_STM32F103_demo.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image D:\Code\stm32\DAY_0203\temperature_oled\YT32B1_STM32F103_demo.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5.02 [Build 28]: Last Updated: Mon Feb 05 00:54:40 2024
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5.02 [Build 28]: Last Updated: Mon Feb 05 20:33:12 2024
 <BR><P>
 <H3>Maximum Stack Usage =        416 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -1122,7 +1122,7 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__user_setup_stackheap
 </UL>
 
-<P><STRONG><a name="[6e]"></a>main</STRONG> (Thumb, 198 bytes, Stack size 8 bytes, main.o(.text))
+<P><STRONG><a name="[6e]"></a>main</STRONG> (Thumb, 68 bytes, Stack size 8 bytes, main.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 416 + Unknown Stack Size
 <LI>Call Chain = main &rArr; OLED_DISPLAY_8x16_BUFFER &rArr; OLED_DISPLAY_8x16 &rArr; USART1_printf &rArr; __c89vsnprintf &rArr; _printf_char_common &rArr; __printf
 </UL>
@@ -1440,7 +1440,7 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_SAND_BYTE
 </UL>
 
-<P><STRONG><a name="[9d]"></a>OLED_DISPLAY_8x16</STRONG> (Thumb, 202 bytes, Stack size 32 bytes, oled0561.o(.text))
+<P><STRONG><a name="[9d]"></a>OLED_DISPLAY_8x16</STRONG> (Thumb, 210 bytes, Stack size 32 bytes, oled0561.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 392 + Unknown Stack Size
 <LI>Call Chain = OLED_DISPLAY_8x16 &rArr; USART1_printf &rArr; __c89vsnprintf &rArr; _printf_char_common &rArr; __printf
 </UL>

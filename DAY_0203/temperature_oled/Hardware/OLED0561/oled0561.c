@@ -92,6 +92,7 @@ void OLED_DISPLAY_8x16(u8 x, //显示汉字的页坐标（从0到7）（此处不可修改）
 		USART1_printf("低4位: %x\n", y%16);
 		for(j=0;j<8;j++){ //整页内容填充
  			I2C_SAND_BYTE(OLED0561_ADD,DAT,ASCII_8x16[(w*16)+c-512]);//为了和ASII表对应要减512
+			USART1_printf("ASCII: %x\n", (w*16)+c-512);
 			c++;}x++; //页地址加1
 	}
 }
