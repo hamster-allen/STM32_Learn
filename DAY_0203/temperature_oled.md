@@ -165,8 +165,11 @@ ASCII_8x16[(w*16)+c-512]
 
 ## OLED取模方式 與 寫入方式
 
+* 取模寫入(方式)順序
 
+  ***從左到右，從上到下***
 
+  ![image](https://github.com/hamster-allen/STM32_Learn/blob/master/DAY_0203/temperature_oled_picture/OLED%E5%AD%97%E6%A8%A1%E5%AF%AB%E5%85%A5%E6%96%B9%E5%BC%8F.png)
 
 
 
