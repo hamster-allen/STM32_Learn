@@ -21,9 +21,16 @@
 
 #include "oled0561.h"
 
+#include "usart.h"
+
+
+
+
 int main (void){//主程序
+	//u8 test_data[8];	
 	u8 buffer[3];
 	delay_ms(100); //上电时等待其他器件就绪
+	
 	RCC_Configuration(); //系统时钟初始化 
 
 	I2C_Configuration();//I2C初始化
@@ -33,7 +40,7 @@ int main (void){//主程序
 	OLED_DISPLAY_LIT(100);//亮度设置
 
 	OLED_DISPLAY_PIC1();//显示全屏图片
-	delay_ms(3000); //延时
+	delay_ms(1000); //延时
 	OLED_DISPLAY_CLEAR();
 	OLED_DISPLAY_8x16_BUFFER(0,"   YoungTalk "); //显示字符串
 	OLED_DISPLAY_8x16_BUFFER(6,"  Temp:"); //显示字符串
@@ -43,18 +50,31 @@ int main (void){//主程序
 	OLED_DISPLAY_16x16(2,4*16,2);
 	OLED_DISPLAY_16x16(2,5*16,3);
 
-	while(1){
-		LM75A_GetTemp(buffer); //读取LM75A的温度数据
-			
-		if(buffer[0])OLED_DISPLAY_8x16(6,7*8,'-'); //如果第1组为1即是负温度
-		OLED_DISPLAY_8x16(6,8*8,buffer[1]/10+0x30);//显示温度值
-		OLED_DISPLAY_8x16(6,9*8,buffer[1]%10+0x30);//
-		OLED_DISPLAY_8x16(6,10*8,'.');//
-		OLED_DISPLAY_8x16(6,11*8,buffer[2]/10+0x30);//
-		OLED_DISPLAY_8x16(6,12*8,buffer[2]%10+0x30);//
-		OLED_DISPLAY_8x16(6,13*8,'C');//
+	USART1_Init(115200);
 
-		delay_ms(200); //延时
+
+	while(1){
+		//LM75A_GetTemp(buffer); //读取LM75A的温度数据
+			
+		//if(buffer[0]){OLED_DISPLAY_8x16(6,7*8,'-');} //如果第1组为1即是负温度
+		//OLED_DISPLAY_8x16(6,8*8,buffer[1]/10+0x30);//显示温度值
+		//OLED_DISPLAY_8x16(6,9*8,buffer[1]%10+0x30);//
+		//OLED_DISPLAY_8x16(6,10*8,'.');//
+		//OLED_DISPLAY_8x16(6,11*8,buffer[2]/10+0x30);//
+		//OLED_DISPLAY_8x16(6,12*8,buffer[2]%10+0x30);//
+		OLED_DISPLAY_8x16(4,13*8,'C');//
+		OLED_Write_8x16(42, 13*8, 'A');
+		//OLED_Read_Display(6, 13*8, test_data);
+		//USART1_printf("test_data0: %x\n", test_data[0]);
+		//USART1_printf("test_data1: %x\n", test_data[1]);
+		//USART1_printf("test_data2: %x\n", test_data[2]);
+		//USART1_printf("test_data3: %x\n", test_data[3]);
+		//USART1_printf("test_data4: %x\n", test_data[4]);
+		//USART1_printf("test_data5: %x\n", test_data[5]);
+		//USART1_printf("test_data6: %x\n", test_data[6]);
+		//USART1_printf("test_data7: %x\n", test_data[7]);
+
+		delay_ms(500); //延时
 	}
 }
 

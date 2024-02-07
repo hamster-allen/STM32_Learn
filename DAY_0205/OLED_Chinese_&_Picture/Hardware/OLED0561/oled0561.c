@@ -34,7 +34,7 @@ void OLED0561_Init (void){//OLED屏开显示初始化
 void OLED_DISPLAY_ON (void){//OLED屏初始值设置并开显示
 	u8 buf[28]={
 	0xae,//0xae:关显示，0xaf:开显示
-    0x00,0x10,//开始地址（双字节）       
+  0x00,0x10,//开始地址（双字节）       
 	0xd5,0x80,//显示时钟频率？
 	0xa8,0x3f,//复用率？
 	0xd3,0x00,//显示偏移？
@@ -98,8 +98,8 @@ void OLED_DISPLAY_8x16(u8 x, //显示汉字的页坐标（从0到7）（此处不可修改）
 void OLED_DISPLAY_8x16_BUFFER(u8 row,u8 *str){
 	u8 r=0;
 	while(*str != '\0'){
-		OLED_DISPLAY_8x16(row,r*8,*str++);
-		r++;
+			OLED_DISPLAY_8x16(row,r*8,*str++);
+			r++;
     }	
 }
 
@@ -133,6 +133,122 @@ void OLED_DISPLAY_PIC1(void){ //显示全屏图片
 	}
 }
  
+
+void OLED_Read_Display(u8 Page, u8 Line,u8 *ReturnBuffer)
+{
+	I2C_SAND_BYTE(OLED0561_ADD,COM,0xb0+Page); //页地址（从0xB0到0xB7）
+	I2C_SAND_BYTE(OLED0561_ADD,COM,Line/16+0x10); //起始列地址的高4位
+	I2C_SAND_BYTE(OLED0561_ADD,COM,Line%16);	//起始列地址的低4位
+	I2C_READ_BUFFER(OLED0561_ADD, 0x40, ReturnBuffer, 8);
+}
+
+
+u8 Get_AND_Byte(u8 data, u8 times)
+{
+	u8 i;
+	for(i=times; i>0; i--)
+	{
+		data = (data<<1)+1;
+	}
+	return data;
+}
+
+void OLED_Write_8x16(u8 x, u8 y, u16 data)
+{
+	u8 j;
+	u8 c=0;
+	u8 display_data;
+	u8 page_num1[8];
+	u8 page_num2[8];
+	u16 CombineByte;
+	u8 AndByte;
+	u16 OrByte1_u16;
+	u16 OrByte2_u16;
+	u16 OrByte;
+	
+	u8 x_intger = x / 8;
+	u8 x_remainder = x % 8;
+	u8 x_intger_end = (x+16)/8;
+	u8 x_remainder_end =  (x+16)%8;	
+	
+	y = y+2;
+	
+	
+	//start
+	OLED_Read_Display(x_intger, y, page_num1);
+	AndByte = Get_AND_Byte(1, (8-x_remainder)-1);
+	I2C_SAND_BYTE(OLED0561_ADD,COM,0xb0+x_intger);
+	I2C_SAND_BYTE(OLED0561_ADD,COM,y/16+0x10); //起始列地址的高4位
+	I2C_SAND_BYTE(OLED0561_ADD,COM,y%16);	//起始列地址的低4位
+	for(j=0;j<8;j++){ //整页内容填充
+		display_data = ASCII_8x16[(data*16)+c-512] & AndByte;
+		display_data = display_data << x_remainder;
+		if(j == 7)
+		{
+			display_data = display_data | page_num1[0];
+		}
+		else
+		{
+			display_data = display_data | page_num1[j+1];
+		}
+ 		I2C_SAND_BYTE(OLED0561_ADD,DAT,display_data);//为了和ASII表对应要减512
+		c++;
+	}
+	
+
+	//end
+	OLED_Read_Display(x_intger_end, y, page_num2);
+	AndByte = Get_AND_Byte(1, x_remainder_end-1);
+	AndByte = AndByte << 8-x_remainder_end;
+	I2C_SAND_BYTE(OLED0561_ADD,COM,0xb0+x_intger_end);
+	I2C_SAND_BYTE(OLED0561_ADD,COM,y/16+0x10); //起始列地址的高4位
+	I2C_SAND_BYTE(OLED0561_ADD,COM,y%16);	//起始列地址的低4位
+	c = 8;
+	for(j=0;j<8;j++){ //整页内容填充
+		display_data = ASCII_8x16[(data*16)+c-512] & AndByte;
+		display_data = display_data >> 8-x_remainder_end;
+		if(j == 7)
+		{
+			display_data = display_data | page_num2[0];
+		}
+		else
+		{
+			display_data = display_data | page_num2[j+1];
+		}
+ 		I2C_SAND_BYTE(OLED0561_ADD,DAT,display_data);//为了和ASII表对应要减512
+		c++;
+	}
+	
+	//middle
+	if(x_intger_end - x_intger > 1)
+	{
+		I2C_SAND_BYTE(OLED0561_ADD,COM,0xb0+x_intger+((x_intger_end-x_intger)-1));
+		I2C_SAND_BYTE(OLED0561_ADD,COM,y/16+0x10); //起始列地址的高4位
+		I2C_SAND_BYTE(OLED0561_ADD,COM,y%16);	//起始列地址的低4位
+		c = 0;
+		for(j=0;j<8;j++){ //整页内容填充
+			CombineByte = (ASCII_8x16[(data*16)+c+8-512]<<8) | ASCII_8x16[(data*16)+c-512];
+			OrByte1_u16 = Get_AND_Byte(1, (8-x_remainder)-1);
+			OrByte2_u16 = (Get_AND_Byte(1, x_remainder_end-1)) << (16-x_remainder_end);
+			OrByte = OrByte1_u16 | OrByte2_u16;
+			OrByte = ~OrByte;
+			
+			display_data = (CombineByte & OrByte) >> (8-x_remainder);
+			I2C_SAND_BYTE(OLED0561_ADD,DAT,display_data);//为了和ASII表对应要减512
+			c++;
+		}
+	}
+	
+	
+	
+}
+
+
+
+
+
+
+
 /*********************************************************************************************
  * 杜洋工作室 www.DoYoung.net
  * 洋桃电子 www.DoYoung.net/YT 

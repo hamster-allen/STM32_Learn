@@ -33,3 +33,8 @@ main.o: .\Basic\delay\delay.h
 main.o: .\Hardware\LM75A\lm75a.h
 main.o: .\Basic\i2c\i2c.h
 main.o: .\Hardware\OLED0561\oled0561.h
+main.o: .\Basic\usart\usart.h
+main.o: C:\Keil\ARM\ARMCC\bin\..\include\stdarg.h
+main.o: C:\Keil\ARM\ARMCC\bin\..\include\stdlib.h
+main.o: C:\Keil\ARM\ARMCC\bin\..\include\string.h
+main.o: C:\Keil\ARM\ARMCC\bin\..\include\stdio.h

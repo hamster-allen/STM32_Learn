@@ -78,6 +78,7 @@ void I2C_READ_BUFFER(u8 SlaveAddr,u8 readAddr,u8* pBuffer,u16 NumByteToRead){ //
 	I2C_Cmd(I2C1,ENABLE);
 	I2C_SendData(I2C1,readAddr); //发送读的地址
 	while(!I2C_CheckEvent(I2C1,I2C_EVENT_MASTER_BYTE_TRANSMITTED)); //清除 EV8
+	
 	I2C_GenerateSTART(I2C1,ENABLE); //开启信号
 	while(!I2C_CheckEvent(I2C1,I2C_EVENT_MASTER_MODE_SELECT)); //清除 EV5
 	I2C_Send7bitAddress(I2C1,SlaveAddr,I2C_Direction_Receiver); //将器件地址传出，主机为读
@@ -98,13 +99,13 @@ void I2C_READ_BUFFER(u8 SlaveAddr,u8 readAddr,u8* pBuffer,u16 NumByteToRead){ //
 u8 I2C_READ_BYTE(u8 SlaveAddr,u8 readAddr){ //I2C读取一个字节
 	u8 a;
 	while(I2C_GetFlagStatus(I2C1,I2C_FLAG_BUSY));
-	I2C_GenerateSTART(I2C1,ENABLE);
-	while(!I2C_CheckEvent(I2C1,I2C_EVENT_MASTER_MODE_SELECT));
-	I2C_Send7bitAddress(I2C1,SlaveAddr, I2C_Direction_Transmitter); 
-	while(!I2C_CheckEvent(I2C1,I2C_EVENT_MASTER_TRANSMITTER_MODE_SELECTED));
-	I2C_Cmd(I2C1,ENABLE);
-	I2C_SendData(I2C1,readAddr);
-	while(!I2C_CheckEvent(I2C1,I2C_EVENT_MASTER_BYTE_TRANSMITTED));
+	//I2C_GenerateSTART(I2C1,ENABLE);
+	//while(!I2C_CheckEvent(I2C1,I2C_EVENT_MASTER_MODE_SELECT));
+	//I2C_Send7bitAddress(I2C1,SlaveAddr, I2C_Direction_Transmitter); 
+	//while(!I2C_CheckEvent(I2C1,I2C_EVENT_MASTER_TRANSMITTER_MODE_SELECTED));
+	//I2C_Cmd(I2C1,ENABLE);
+	//I2C_SendData(I2C1,readAddr);
+	//while(!I2C_CheckEvent(I2C1,I2C_EVENT_MASTER_BYTE_TRANSMITTED));
 	I2C_GenerateSTART(I2C1,ENABLE);
 	while(!I2C_CheckEvent(I2C1,I2C_EVENT_MASTER_MODE_SELECT));
 	I2C_Send7bitAddress(I2C1,SlaveAddr, I2C_Direction_Receiver);
