@@ -1,6 +1,10 @@
 # 如何實現在任何一點X上顯示想要的文字(8x16)
 
 
+## 效果呈現之圖示
+
+![image](https://github.com/hamster-allen/STM32_Learn/blob/master/DAY_0205/OLED_Function_picture/%E9%A1%AF%E7%A4%BA%E7%AF%84%E4%BE%8B%E5%9C%96.jpg)
+
 ## 顯示函數
 ```
 void OLED_Write_8x16(u8 x, u8 y, u16 data)
@@ -120,8 +124,9 @@ void OLED_Read_Display(u8 Page, u8 Line,u8 *ReturnBuffer)
 }
 ```
 
+## 手寫筆記
 
-
+![image](https://github.com/hamster-allen/STM32_Learn/blob/master/DAY_0205/OLED_Function_picture/%E6%89%8B%E5%AF%AB%E7%AD%86%E8%A8%98.jpg)
 
 
 
