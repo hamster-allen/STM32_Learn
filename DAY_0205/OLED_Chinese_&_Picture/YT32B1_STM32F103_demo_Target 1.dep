@@ -293,7 +293,7 @@ I (.\Lib\inc\stm32f10x_usart.h)(0x4D783BB4)
 I (.\Lib\inc\stm32f10x_wwdg.h)(0x4D783BB4)
 I (.\Lib\inc\misc.h)(0x4D783BB4)
 F (.\Startup\startup_stm32f10x_md.s)(0x4D783CD2)(--cpu Cortex-M3 -g --apcs=interwork -I C:\Keil\ARM\RV31\INC -I C:\Keil\ARM\CMSIS\Include -I C:\Keil\ARM\Inc\ST\STM32F10x --list ".\startup_stm32f10x_md.lst" --xref -o "startup_stm32f10x_md.o" --depend "startup_stm32f10x_md.d")
-F (.\User\main.c)(0x65C36F03)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I.\CMSIS -I.\Lib\inc -I.\Lib\src -I.\User -I.\Startup -I.\Basic\delay -I.\Basic\sys -I.\Hardware\LED -I.\Hardware\KEY -I.\Basic\flash -I.\Hardware\BUZZER -I.\Basic\usart -I.\Basic\rtc -I.\Hardware\TOUCH_KEY -I.\Hardware\TM1640 -I.\Hardware\ENCODER -I.\Basic\i2c -I.\Hardware\LM75A -I.\Hardware\OLED0561 -I C:\Keil\ARM\RV31\INC -I C:\Keil\ARM\CMSIS\Include -I C:\Keil\ARM\Inc\ST\STM32F10x -DUSE_STDPERIPH_DRIVER -DSTM32F10X_MD -o "main.o" --omf_browse "main.crf" --depend "main.d")
+F (.\User\main.c)(0x65C3B327)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I.\CMSIS -I.\Lib\inc -I.\Lib\src -I.\User -I.\Startup -I.\Basic\delay -I.\Basic\sys -I.\Hardware\LED -I.\Hardware\KEY -I.\Basic\flash -I.\Hardware\BUZZER -I.\Basic\usart -I.\Basic\rtc -I.\Hardware\TOUCH_KEY -I.\Hardware\TM1640 -I.\Hardware\ENCODER -I.\Basic\i2c -I.\Hardware\LM75A -I.\Hardware\OLED0561 -I C:\Keil\ARM\RV31\INC -I C:\Keil\ARM\CMSIS\Include -I C:\Keil\ARM\Inc\ST\STM32F10x -DUSE_STDPERIPH_DRIVER -DSTM32F10X_MD -o "main.o" --omf_browse "main.crf" --depend "main.d")
 I (.\CMSIS\stm32f10x.h)(0x4D783CB4)
 I (.\CMSIS\core_cm3.h)(0x4D523B58)
 I (C:\Keil\ARM\ARMCC\bin\..\include\stdint.h)(0x4EB0D284)
@@ -772,7 +772,7 @@ I (.\Lib\inc\stm32f10x_usart.h)(0x4D783BB4)
 I (.\Lib\inc\stm32f10x_wwdg.h)(0x4D783BB4)
 I (.\Lib\inc\misc.h)(0x4D783BB4)
 I (.\Basic\i2c\i2c.h)(0x5A94FA3C)
-F (.\Hardware\OLED0561\oled0561.c)(0x65C368EE)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I.\CMSIS -I.\Lib\inc -I.\Lib\src -I.\User -I.\Startup -I.\Basic\delay -I.\Basic\sys -I.\Hardware\LED -I.\Hardware\KEY -I.\Basic\flash -I.\Hardware\BUZZER -I.\Basic\usart -I.\Basic\rtc -I.\Hardware\TOUCH_KEY -I.\Hardware\TM1640 -I.\Hardware\ENCODER -I.\Basic\i2c -I.\Hardware\LM75A -I.\Hardware\OLED0561 -I C:\Keil\ARM\RV31\INC -I C:\Keil\ARM\CMSIS\Include -I C:\Keil\ARM\Inc\ST\STM32F10x -DUSE_STDPERIPH_DRIVER -DSTM32F10X_MD -o "oled0561.o" --omf_browse "oled0561.crf" --depend "oled0561.d")
+F (.\Hardware\OLED0561\oled0561.c)(0x65C3B2A4)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I.\CMSIS -I.\Lib\inc -I.\Lib\src -I.\User -I.\Startup -I.\Basic\delay -I.\Basic\sys -I.\Hardware\LED -I.\Hardware\KEY -I.\Basic\flash -I.\Hardware\BUZZER -I.\Basic\usart -I.\Basic\rtc -I.\Hardware\TOUCH_KEY -I.\Hardware\TM1640 -I.\Hardware\ENCODER -I.\Basic\i2c -I.\Hardware\LM75A -I.\Hardware\OLED0561 -I C:\Keil\ARM\RV31\INC -I C:\Keil\ARM\CMSIS\Include -I C:\Keil\ARM\Inc\ST\STM32F10x -DUSE_STDPERIPH_DRIVER -DSTM32F10X_MD -o "oled0561.o" --omf_browse "oled0561.crf" --depend "oled0561.d")
 I (Hardware\OLED0561\oled0561.h)(0x65C27EB9)
 I (.\Basic\sys\sys.h)(0x59A2B584)
 I (.\CMSIS\stm32f10x.h)(0x4D783CB4)

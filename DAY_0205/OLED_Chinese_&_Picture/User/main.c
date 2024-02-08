@@ -63,7 +63,7 @@ int main (void){//Ö÷³ÌÐò
 		//OLED_DISPLAY_8x16(6,11*8,buffer[2]/10+0x30);//
 		//OLED_DISPLAY_8x16(6,12*8,buffer[2]%10+0x30);//
 		OLED_DISPLAY_8x16(4,13*8,'C');//
-		OLED_Write_8x16(42, 13*8, 'A');
+		OLED_Write_8x16(56, 13*8, 'A');
 		//OLED_Read_Display(6, 13*8, test_data);
 		//USART1_printf("test_data0: %x\n", test_data[0]);
 		//USART1_printf("test_data1: %x\n", test_data[1]);

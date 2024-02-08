@@ -173,7 +173,6 @@ void OLED_Write_8x16(u8 x, u8 y, u16 data)
 	
 	y = y+2;
 	
-	
 	//start
 	OLED_Read_Display(x_intger, y, page_num1);
 	AndByte = Get_AND_Byte(1, (8-x_remainder)-1);
@@ -238,9 +237,6 @@ void OLED_Write_8x16(u8 x, u8 y, u16 data)
 			c++;
 		}
 	}
-	
-	
-	
 }
 
 
