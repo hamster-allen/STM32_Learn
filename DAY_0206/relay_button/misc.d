@@ -2,7 +2,7 @@ misc.o: Lib\src\misc.c
 misc.o: .\Lib\inc\misc.h
 misc.o: .\CMSIS\stm32f10x.h
 misc.o: .\CMSIS\core_cm3.h
-misc.o: C:\Keil\ARM\RV31\INC\stdint.h
+misc.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
 misc.o: .\CMSIS\system_stm32f10x.h
 misc.o: .\User\stm32f10x_conf.h
 misc.o: .\Lib\inc\stm32f10x_adc.h
