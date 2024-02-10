@@ -32,8 +32,8 @@ int main (void){//主程序
 	while(1){
 		if(!GPIO_ReadInputDataBit(TOUCH_KEYPORT,TOUCH_KEY_A))STEP_MOTOR_LOOP(0,1,3); // 按圈数右转		
 		else if(!GPIO_ReadInputDataBit(TOUCH_KEYPORT,TOUCH_KEY_B))STEP_MOTOR_LOOP(1,1,3); //按圈数左转		
-		else if(!GPIO_ReadInputDataBit(TOUCH_KEYPORT,TOUCH_KEY_C))STEP_MOTOR_NUM(0,100,3); //按步数右转
-		else if(!GPIO_ReadInputDataBit(TOUCH_KEYPORT,TOUCH_KEY_D))STEP_MOTOR_NUM(1,100,3); //按步数左转
+		else if(!GPIO_ReadInputDataBit(TOUCH_KEYPORT,TOUCH_KEY_C))STEP_MOTOR_NUM(0,25,3); //按步数右转
+		else if(!GPIO_ReadInputDataBit(TOUCH_KEYPORT,TOUCH_KEY_D))STEP_MOTOR_NUM(1,25,3); //按步数左转
 		else STEP_MOTOR_OFF();//当没有按键时步进电机断电
 	}
 }
