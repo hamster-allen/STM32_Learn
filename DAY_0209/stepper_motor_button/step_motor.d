@@ -3,7 +3,7 @@ step_motor.o: Hardware\STEP_MOTOR\step_motor.h
 step_motor.o: .\Basic\sys\sys.h
 step_motor.o: .\CMSIS\stm32f10x.h
 step_motor.o: .\CMSIS\core_cm3.h
-step_motor.o: C:\Keil\ARM\RV31\INC\stdint.h
+step_motor.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
 step_motor.o: .\CMSIS\system_stm32f10x.h
 step_motor.o: .\User\stm32f10x_conf.h
 step_motor.o: .\Lib\inc\stm32f10x_adc.h

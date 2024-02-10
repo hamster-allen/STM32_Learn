@@ -40,16 +40,19 @@ void STEP_MOTOR_OFF (void){//电机断电
 }
 
 void STEP_MOTOR_4S (u8 speed){//电机固定位置
+	
 	GPIO_ResetBits(STEP_MOTOR_PORT,STEP_MOTOR_A| STEP_MOTOR_C);	//各接口置0
 	GPIO_SetBits(STEP_MOTOR_PORT,STEP_MOTOR_B | STEP_MOTOR_D); //各接口置1
 	delay_ms(speed); //延时
 	GPIO_ResetBits(STEP_MOTOR_PORT,STEP_MOTOR_A | STEP_MOTOR_B | STEP_MOTOR_C | STEP_MOTOR_D);
 	delay_ms(speed); //延时
-	GPIO_ResetBits(STEP_MOTOR_PORT,STEP_MOTOR_B | STEP_MOTOR_D);//0
-	GPIO_SetBits(STEP_MOTOR_PORT,STEP_MOTOR_A | STEP_MOTOR_C); //1
-	delay_ms(speed); //延时
-	GPIO_ResetBits(STEP_MOTOR_PORT,STEP_MOTOR_A | STEP_MOTOR_B | STEP_MOTOR_C | STEP_MOTOR_D);
-	delay_ms(speed); //延时
+	
+	//GPIO_ResetBits(STEP_MOTOR_PORT,STEP_MOTOR_B | STEP_MOTOR_D);//0
+	//GPIO_SetBits(STEP_MOTOR_PORT,STEP_MOTOR_A | STEP_MOTOR_C); //1
+	//delay_ms(speed); //延时
+	//GPIO_ResetBits(STEP_MOTOR_PORT,STEP_MOTOR_A | STEP_MOTOR_B | STEP_MOTOR_C | STEP_MOTOR_D);
+	//delay_ms(speed); //延时
+	
 	STEP_MOTOR_OFF(); //进入断电状态，防电机过热
 }
 

@@ -3,7 +3,7 @@ relay.o: Hardware\RELAY\relay.h
 relay.o: .\Basic\sys\sys.h
 relay.o: .\CMSIS\stm32f10x.h
 relay.o: .\CMSIS\core_cm3.h
-relay.o: C:\Keil\ARM\RV31\INC\stdint.h
+relay.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
 relay.o: .\CMSIS\system_stm32f10x.h
 relay.o: .\User\stm32f10x_conf.h
 relay.o: .\Lib\inc\stm32f10x_adc.h

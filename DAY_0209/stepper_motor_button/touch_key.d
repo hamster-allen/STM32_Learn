@@ -3,7 +3,7 @@ touch_key.o: Hardware\TOUCH_KEY\touch_key.h
 touch_key.o: .\Basic\sys\sys.h
 touch_key.o: .\CMSIS\stm32f10x.h
 touch_key.o: .\CMSIS\core_cm3.h
-touch_key.o: C:\Keil\ARM\RV31\INC\stdint.h
+touch_key.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
 touch_key.o: .\CMSIS\system_stm32f10x.h
 touch_key.o: .\User\stm32f10x_conf.h
 touch_key.o: .\Lib\inc\stm32f10x_adc.h
