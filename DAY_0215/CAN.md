@@ -59,12 +59,12 @@
 * 兩個設備: 當成USART使用
 * 多個設備: 使用CAN協議(使用郵箱、識別符、過濾器功能)
 
-  ![image]()
+  ![image](https://github.com/hamster-allen/STM32_Learn/blob/master/DAY_0215/CAN_picture/%E5%85%A9%E5%80%8B_%E5%A4%9A%E5%80%8B%E8%A8%AD%E5%82%99.png)
 
 * 以`ISO 11898(High speed)`為例，電位差為0時，表示數據為1
 * 電位差為2.0V時，表示數據為0
 
-  ![image]()
+  ![image](https://github.com/hamster-allen/STM32_Learn/blob/master/DAY_0215/CAN_picture/CAN%E7%89%A9%E7%90%86%E5%B1%A4.png)
 
 > 顯性電平(0V)具有優先權，只要有設備輸出顯性電平，總線上即為顯性電平<br>
 > 只有所有的設備都輸出隱性電平，總線才為隱性電平<br>
