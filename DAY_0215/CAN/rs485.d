@@ -2,7 +2,7 @@ rs485.o: Hardware\RS485\rs485.c
 rs485.o: .\Basic\sys\sys.h
 rs485.o: .\CMSIS\stm32f10x.h
 rs485.o: .\CMSIS\core_cm3.h
-rs485.o: C:\Keil\ARM\RV31\INC\stdint.h
+rs485.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
 rs485.o: .\CMSIS\system_stm32f10x.h
 rs485.o: .\User\stm32f10x_conf.h
 rs485.o: .\Lib\inc\stm32f10x_adc.h
@@ -30,8 +30,8 @@ rs485.o: .\Lib\inc\stm32f10x_usart.h
 rs485.o: .\Lib\inc\stm32f10x_wwdg.h
 rs485.o: .\Lib\inc\misc.h
 rs485.o: .\Basic\usart\usart.h
-rs485.o: C:\Keil\ARM\RV31\INC\stdarg.h
-rs485.o: C:\Keil\ARM\RV31\INC\stdlib.h
-rs485.o: C:\Keil\ARM\RV31\INC\string.h
-rs485.o: C:\Keil\ARM\RV31\INC\stdio.h
+rs485.o: C:\Keil\ARM\ARMCC\bin\..\include\stdarg.h
+rs485.o: C:\Keil\ARM\ARMCC\bin\..\include\stdlib.h
+rs485.o: C:\Keil\ARM\ARMCC\bin\..\include\string.h
+rs485.o: C:\Keil\ARM\ARMCC\bin\..\include\stdio.h
 rs485.o: Hardware\RS485\rs485.h

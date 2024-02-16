@@ -68,6 +68,7 @@ u8 CAN1_Configuration(void){ //CAN初始化（返回0表示设置成功，返回其他表示失败）
 
 #if CAN_INT_ENABLE 	//以下是用于CAN中断方式接收的设置
     CAN_ITConfig(CAN1,CAN_IT_FMP0,ENABLE);              //FIFO0消息挂号中断允许.            
+#include <stm32f10x_lib.h>
     NVIC_InitStructure.NVIC_IRQChannel = USB_LP_CAN1_RX0_IRQn;
     NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 1;     // 主优先级为1
     NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;            // 次优先级为0

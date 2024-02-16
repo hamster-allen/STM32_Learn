@@ -3,7 +3,7 @@ can.o: Hardware\CAN\can.h
 can.o: .\Basic\sys\sys.h
 can.o: .\CMSIS\stm32f10x.h
 can.o: .\CMSIS\core_cm3.h
-can.o: C:\Keil\ARM\RV31\INC\stdint.h
+can.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
 can.o: .\CMSIS\system_stm32f10x.h
 can.o: .\User\stm32f10x_conf.h
 can.o: .\Lib\inc\stm32f10x_adc.h
