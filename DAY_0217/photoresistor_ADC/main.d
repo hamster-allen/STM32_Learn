@@ -1,7 +1,7 @@
 main.o: User\main.c
 main.o: .\CMSIS\stm32f10x.h
 main.o: .\CMSIS\core_cm3.h
-main.o: C:\Keil\ARM\RV31\INC\stdint.h
+main.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
 main.o: .\CMSIS\system_stm32f10x.h
 main.o: .\User\stm32f10x_conf.h
 main.o: .\Lib\inc\stm32f10x_adc.h
