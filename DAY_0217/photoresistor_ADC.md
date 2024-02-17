@@ -74,7 +74,7 @@
 
 ## ADC暫存器地址
 
-[STM32F10XXX參考手冊]()
+[STM32F10XXX參考手冊](https://github.com/hamster-allen/STM32_Learn/blob/master/Development_Information/STM32F10XXX%E5%8F%83%E8%80%83%E6%89%8B%E5%86%8A.pdf)
 
 * P28 -> 所有暫存器地址，由此可知ADC1的地址範圍
 
@@ -108,7 +108,7 @@
 |DMA_Priority|DMA通道的優先級|DMA_Priority_VeryHigh -> 最高優先級<br>DMA_Priority_High  -> 高優先級<br>DMA_Priority_Medium -> 中優先級<br>DMA_Priority_Low  -> 低優先級|
 |DMA_M2M|是否啟用記憶體到記憶體傳輸|DMA_M2M_Enable -> 啟用<br>DMA_M2M_Disable -> 關閉|
 
-> DMA與ADC之設定等資料 -> [STM32F103固件函數庫用戶手冊]()
+> DMA與ADC之設定等資料 -> [STM32F103固件函數庫用戶手冊](https://github.com/hamster-allen/STM32_Learn/blob/master/Development_Information/STM32F103%E5%9B%BA%E4%BB%B6%E5%87%BD%E6%95%B8%E5%BA%AB%E7%94%A8%E6%88%B7%E6%89%8B%E5%86%8A.pdf)
 
 <br>
 
