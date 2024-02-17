@@ -6,7 +6,8 @@
 
 **當手遮住光敏電阻上的光線時，光敏電阻的阻值會變大**
 
-  ![效果呈現]()
+  ![效果呈現](https://github.com/hamster-allen/STM32_Learn/blob/master/DAY_0217/photoresistor_ADC_picture/%E6%95%88%E6%9E%9C%E5%91%88%E7%8F%BE.png)
+  
 <br>
 
 ## 前置工作
@@ -22,8 +23,7 @@
 * 一般的GPIO只能讀取高電平(1)或低電平(0)，也就是邏輯電平輸入
 * ADC輸入可以讀取0~3.3V之間的電壓值
 
-  ![image]()
-
+  ![原理_讀取電壓](https://github.com/hamster-allen/STM32_Learn/blob/master/DAY_0217/photoresistor_ADC_picture/%E5%8E%9F%E7%90%86_%E8%AE%80%E5%8F%96%E9%9B%BB%E5%A3%93.png)
 > 如果VDD是其他值的電壓，ADC讀取的最大值也會改變
 
 <br>
@@ -45,7 +45,7 @@
 * 兩個ADC都可以透過CPU操作並加以設置，或者讀取ADC的採集電壓值
 * ADC也可以透過DMA進行自動採集數據，並儲存到SRAM當中
 
-  ![ADC與DMA的關係]()
+  ![ADC與DMA的關係](https://github.com/hamster-allen/STM32_Learn/blob/master/DAY_0217/photoresistor_ADC_picture/ADC%E8%88%87DMA%E7%9A%84%E9%97%9C%E4%BF%82.png)
 
 <br>
 
@@ -54,11 +54,11 @@
 * 有10個ADC通道輸入引腳
 * VDDA、VSSA引腳是ADC功能的電源輸入
 
-  ![VSSA_VDDA輸入]()
+  ![VSSA_VDDA輸入](https://github.com/hamster-allen/STM32_Learn/blob/master/DAY_0217/photoresistor_ADC_picture/VSSA_VDDA%E8%BC%B8%E5%85%A5.png)
 
-  ![ADC接口1]()
+  ![ADC接口1](https://github.com/hamster-allen/STM32_Learn/blob/master/DAY_0217/photoresistor_ADC_picture/ADC%E6%8E%A5%E5%8F%A31.png)
 
-  ![ADC接口2]()
+  ![ADC接口2](https://github.com/hamster-allen/STM32_Learn/blob/master/DAY_0217/photoresistor_ADC_picture/ADC%E6%8E%A5%E5%8F%A32.png)
 
 > VDDA、VSSA為獨立穩定電源輸入，可提供ADC讀取的精度和穩定性
 
@@ -68,7 +68,7 @@
 
 * 透過光敏電阻因偵測到不同光線所產生不同的電壓值與R8進行分壓後，經由R10連接到PA5的ADC輸入通道
 
-  ![光敏電阻_電路圖]()
+  ![光敏電阻_電路圖](https://github.com/hamster-allen/STM32_Learn/blob/master/DAY_0217/photoresistor_ADC_picture/%E5%85%89%E6%95%8F%E9%9B%BB%E9%98%BB_%E9%9B%BB%E8%B7%AF%E5%9C%96.png)
 
 <br>
 
@@ -78,12 +78,12 @@
 
 * P28 -> 所有暫存器地址，由此可知ADC1的地址範圍
 
-  ![ADC1的地址範圍]()
+  ![ADC1的地址範圍](https://github.com/hamster-allen/STM32_Learn/blob/master/DAY_0217/photoresistor_ADC_picture/ADC1%E7%9A%84%E5%9C%B0%E5%9D%80%E7%AF%84%E5%9C%8D.png)
   
 * P180 -> ADC的暫存器地址
 * P181的`4Ch`可以看到是一個32位的暫存器，0~15位是ADC1最終轉化出來的數據，而16~31則是ADC2
 
-  ![ADC轉換後暫存器地址]()
+  ![ADC轉換後暫存器地址](https://github.com/hamster-allen/STM32_Learn/blob/master/DAY_0217/photoresistor_ADC_picture/ADC%E8%BD%89%E6%8F%9B%E5%BE%8C%E6%9A%AB%E5%AD%98%E5%99%A8%E5%9C%B0%E5%9D%80.png)
 
 * 最後只要將起始地址加上偏移即可得出存放數據的精確位置
   * ADC -> 0x40012400 + 0x4C = 0x4001244C
@@ -108,6 +108,7 @@
 |DMA_Priority|DMA通道的優先級|DMA_Priority_VeryHigh -> 最高優先級<br>DMA_Priority_High  -> 高優先級<br>DMA_Priority_Medium -> 中優先級<br>DMA_Priority_Low  -> 低優先級|
 |DMA_M2M|是否啟用記憶體到記憶體傳輸|DMA_M2M_Enable -> 啟用<br>DMA_M2M_Disable -> 關閉|
 
+> DMA與ADC之設定等資料 -> [STM32F103固件函數庫用戶手冊]()
 
 <br>
 
