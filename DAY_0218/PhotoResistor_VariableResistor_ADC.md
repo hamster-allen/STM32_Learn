@@ -7,7 +7,7 @@
 * 讀取光敏電阻的數值並顯示在OLED上
 * 調整可變電阻時，OLED上的數值會跟著改變
 
-  ![效果呈現](https://github.com/hamster-allen/STM32_Learn/tree/master/DAY_0218/PhotoResistor_VariableResistor_ADC_picture)
+  ![效果呈現](https://github.com/hamster-allen/STM32_Learn/blob/master/DAY_0218/PhotoResistor_VariableResistor_ADC_picture/%E6%95%88%E6%9E%9C%E5%91%88%E7%8F%BE.png)
 
 
 <br>
