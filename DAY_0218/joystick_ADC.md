@@ -10,7 +10,7 @@
 * ADC_IN6 -> X軸(右:4090、左:0)
 * ADC_IN7 -> Y軸(上:4090、下:0)
 
-  ![效果呈現]()
+  ![效果呈現](https://github.com/hamster-allen/STM32_Learn/blob/master/DAY_0218/joystick_ADC_picture/%E6%95%88%E6%9E%9C%E5%91%88%E7%8F%BE.png)
 
 <br>
 
@@ -18,11 +18,11 @@
 
 * 連接搖桿的跳線(P17)
   
-  ![搖桿跳線]()
+  ![搖桿跳線](https://github.com/hamster-allen/STM32_Learn/blob/master/DAY_0218/joystick_ADC_picture/%E6%90%96%E6%A1%BF%E8%B7%B3%E7%B7%9A.png)
 
 * 斷開編碼器的跳線(P18)，因為腳位共用
 
-  ![編碼器跳線]()
+  ![編碼器跳線](https://github.com/hamster-allen/STM32_Learn/blob/master/DAY_0218/joystick_ADC_picture/%E7%B7%A8%E7%A2%BC%E5%99%A8%E8%B7%B3%E7%B7%9A.png)
 
 <br>
 
@@ -30,13 +30,13 @@
 
 * 編碼器&搖桿腳位之電路圖對應名稱
 
-  ![電路圖1]()
+  ![電路圖1](https://github.com/hamster-allen/STM32_Learn/blob/master/DAY_0218/joystick_ADC_picture/%E9%9B%BB%E8%B7%AF%E5%9C%961.png)
 
 * 三個腳位透過跳線(P17)連接到搖桿
 * `JS_X`和`JS_Y`分別連接到搖桿內部的可變電阻
 * `JS_D`連接到搖桿的按鍵
 
-  ![電路圖2]()
+  ![電路圖2](https://github.com/hamster-allen/STM32_Learn/blob/master/DAY_0218/joystick_ADC_picture/%E9%9B%BB%E8%B7%AF%E5%9C%962.png)
 
 <br>
 
