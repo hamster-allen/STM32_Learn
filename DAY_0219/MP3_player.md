@@ -62,45 +62,46 @@ int main (void)
 {
   u8 b;
   u8 MP3=0;
-  delay_ms(500);                                       //上电时等待其他器件就绪
-  RCC_Configuration();                                 //系统时钟初始化 
-  TOUCH_KEY_Init();                                    //触摸按键初始化
-  RELAY_Init();//继电器初始化
+  delay_ms(500);                                       //等待其他元件進入穩定狀態
 
-  ENCODER_Init(); //旋转编码器初始化
-  MY1690_Init(); //MP3芯片初始化
-  
-  I2C_Configuration();//I2C初始化
-  OLED0561_Init(); //OLED初始化
-  OLED_DISPLAY_8x16_BUFFER(0,"   YoungTalk    "); //显示字符串
-  OLED_DISPLAY_8x16_BUFFER(3," MP3 PLAY TEST  "); //显示字符串
+  RCC_Configuration();                                 //系統時鐘初始化
+  TOUCH_KEY_Init();                                    //觸摸開關初始化
+  RELAY_Init();                                        //繼電器初始化
+  ENCODER_Init();                                      //編碼器初始化
+  MY1690_Init();                                       //MP3晶片初始化(MY1690)
+  I2C_Configuration();                                 //I2C初始化
+  OLED0561_Init();                                     //OLED初始化
+
+  OLED_DISPLAY_8x16_BUFFER(0,"   YoungTalk    ");      //顯示字串
+  OLED_DISPLAY_8x16_BUFFER(3," MP3 PLAY TEST  ");      //顯示字串
 
   while(1)
   {
-    //判断4个按键是否按下
+    //判斷觸摸開關是否有任何一個被按下
     if(GPIO_ReadInputDataBit(TOUCH_KEYPORT,TOUCH_KEY_A)==0 || GPIO_ReadInputDataBit(TOUCH_KEYPORT,TOUCH_KEY_B)==0 || GPIO_ReadInputDataBit(TOUCH_KEYPORT,TOUCH_KEY_C)==0 || GPIO_ReadInputDataBit(TOUCH_KEYPORT,TOUCH_KEY_D)==0)
     {
-      delay_ms(20); //延时
-      if(GPIO_ReadInputDataBit(TOUCH_KEYPORT,TOUCH_KEY_A)==0)
+      delay_ms(20);
+      if(GPIO_ReadInputDataBit(TOUCH_KEYPORT,TOUCH_KEY_A)==0)      // A被按下
       {	
-        MY1690_PREV(); //上一曲
-        OLED_DISPLAY_8x16_BUFFER(6,"  -- PREV --    "); //显示字符串
-        delay_ms(500); //延时
-        OLED_DISPLAY_8x16_BUFFER(6,"  -- PLAY --    "); //显示字符串
+        MY1690_PREV();                                             // 上一曲
+        OLED_DISPLAY_8x16_BUFFER(6,"  -- PREV --    ");
+        delay_ms(500);
+        OLED_DISPLAY_8x16_BUFFER(6,"  -- PLAY --    ");
       }
-      if(GPIO_ReadInputDataBit(TOUCH_KEYPORT,TOUCH_KEY_B)==0)
+      if(GPIO_ReadInputDataBit(TOUCH_KEYPORT,TOUCH_KEY_B)==0)      // B被按下
       {
-        MY1690_NEXT(); //下一曲
-        OLED_DISPLAY_8x16_BUFFER(6,"  -- NEXT --    "); //显示字符串
-        delay_ms(500); //延时
-        OLED_DISPLAY_8x16_BUFFER(6,"  -- PLAY --    "); //显示字符串
+        MY1690_NEXT();                                             // 下一曲
+        OLED_DISPLAY_8x16_BUFFER(6,"  -- NEXT --    ");
+        delay_ms(500);
+        OLED_DISPLAY_8x16_BUFFER(6,"  -- PLAY --    ");
       }
-      if(GPIO_ReadInputDataBit(TOUCH_KEYPORT,TOUCH_KEY_C)==0)
+      if(GPIO_ReadInputDataBit(TOUCH_KEYPORT,TOUCH_KEY_C)==0)      // C被按下
       {
-        MY1690_CMD2(0x31,30); //将音量设置为30（最大）
-        delay_ms(500); //延时
+        MY1690_CMD2(0x31,30);                                      // 將音量設置為30(最大)
+        delay_ms(500);
       }
-      if(GPIO_ReadInputDataBit(TOUCH_KEYPORT,TOUCH_KEY_D)==0){
+      if(GPIO_ReadInputDataBit(TOUCH_KEYPORT,TOUCH_KEY_D)==0)
+	{
         MY1690_CMD3(0x41,0x04); //直接播放第0004曲
         delay_ms(500); //延时
       }
