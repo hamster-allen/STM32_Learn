@@ -7,9 +7,9 @@
 * `CH376 OK!`表示STM32已經成功與CH376進行通訊
 * `U DISK Ready!`表示已讀取到有USB插入
 
-  ![效果呈現1]()
+  ![效果呈現1](https://github.com/hamster-allen/STM32_Learn/blob/master/DAY_0221/USB_SPI_picture/%E6%95%88%E6%9E%9C%E5%91%88%E7%8F%BE1.png)
 
-  ![效果呈現2]()
+  ![效果呈現2](https://github.com/hamster-allen/STM32_Learn/blob/master/DAY_0221/USB_SPI_picture/%E6%95%88%E6%9E%9C%E5%91%88%E7%8F%BE2.png)
 
 <br>
 
@@ -17,12 +17,12 @@
 
 * 開發板右上角跳線連接
 
-  ![開發板右上角跳線連接]()
+  ![開發板右上角跳線連接](https://github.com/hamster-allen/STM32_Learn/blob/master/DAY_0221/USB_SPI_picture/%E9%96%8B%E7%99%BC%E6%9D%BF%E5%8F%B3%E4%B8%8A%E8%A7%92%E8%B7%B3%E7%B7%9A%E9%80%A3%E6%8E%A5.png)
 
 
 * 將USB格式化(FAT or FAT32)
 
-  ![USB格式化]()
+  ![USB格式化](https://github.com/hamster-allen/STM32_Learn/blob/master/DAY_0221/USB_SPI_picture/USB%E6%A0%BC%E5%BC%8F%E5%8C%96.png)
 
 <br>
 
@@ -31,7 +31,7 @@
 * STM32與CH376可以透過UART或SPI通訊
 * CH376可以連接USB或SD卡
 
-  ![通訊原理圖]()
+  ![通訊原理圖](https://github.com/hamster-allen/STM32_Learn/blob/master/DAY_0221/USB_SPI_picture/%E9%80%9A%E8%A8%8A%E5%8E%9F%E7%90%86%E5%9C%96.png)
 
 <br>
 
@@ -51,37 +51,37 @@
 
 * SPI1
 
-  ![SPI1]()
+  ![SPI1](https://github.com/hamster-allen/STM32_Learn/blob/master/DAY_0221/USB_SPI_picture/SPI1.png)
 
 * SPI2
 
-  ![SPI2]()
+  ![SPI2](https://github.com/hamster-allen/STM32_Learn/blob/master/DAY_0221/USB_SPI_picture/SPI2.png)
 
 <br>
 
 ## 電路圖
 
-![整體電路圖]()
+![整體電路圖](https://github.com/hamster-allen/STM32_Learn/blob/master/DAY_0221/USB_SPI_picture/%E9%9B%BB%E8%B7%AF%E5%9C%96_%E6%95%B4%E9%AB%94%E9%9B%BB%E8%B7%AF%E5%9C%96.png)
 
 * SPI腳位定義
 
-  ![電路圖_腳位定義]()
+  ![電路圖_腳位定義](https://github.com/hamster-allen/STM32_Learn/blob/master/DAY_0221/USB_SPI_picture/%E9%9B%BB%E8%B7%AF%E5%9C%96_%E8%85%B3%E4%BD%8D%E5%AE%9A%E7%BE%A9.png)
 
 * 當連接P16的9~16的跳線時，SPI可以直接連接到TF卡槽，但在這裡不連接
 
-  ![電路圖_P16跳線]()
+  ![電路圖_P16跳線](https://github.com/hamster-allen/STM32_Learn/blob/master/DAY_0221/USB_SPI_picture/%E9%9B%BB%E8%B7%AF%E5%9C%96_P16%E8%B7%B3%E7%B7%9A.png)
 
-  ![實際圖_P16跳線]()
+  ![實際圖_P16跳線](https://github.com/hamster-allen/STM32_Learn/blob/master/DAY_0221/USB_SPI_picture/%E5%AF%A6%E9%9A%9B%E5%9C%96_P16%E8%B7%B3%E7%B7%9A.png)
 
 * 當連接P15的9~16的跳線時，也就表示連接到CH376晶片的SPI
 
-  ![電路圖_P15跳線]()
+  ![電路圖_P15跳線](https://github.com/hamster-allen/STM32_Learn/blob/master/DAY_0221/USB_SPI_picture/%E9%9B%BB%E8%B7%AF%E5%9C%96_P15%E8%B7%B3%E7%B7%9A.png)
 
-  ![實際圖_P15跳線]()
+  ![實際圖_P15跳線](https://github.com/hamster-allen/STM32_Learn/blob/master/DAY_0221/USB_SPI_picture/%E5%AF%A6%E9%9A%9B%E5%9C%96_P15%E8%B7%B3%E7%B7%9A.png)
 
 #### 【CH376整體電路與接腳說明】
 
-![電路圖_CH376整體電路]()
+![電路圖_CH376整體電路](https://github.com/hamster-allen/STM32_Learn/blob/master/DAY_0221/USB_SPI_picture/%E9%9B%BB%E8%B7%AF%E5%9C%96_CH376%E6%95%B4%E9%AB%94%E9%9B%BB%E8%B7%AF.png)
 
 |腳號|腳位名稱|功能|
 |:---:|:---:|:---:|
