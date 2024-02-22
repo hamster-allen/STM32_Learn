@@ -107,5 +107,127 @@
 |20|VCC|電源正極|
 
 
+## 程序分析
+
+#### 【主程序】
+
+```
+int main (void)
+{
+  u8 s;
+  delay_ms(500);                                       //等待所有元件都進入穩定狀態
+  RCC_Configuration();                                 //系統時鐘初始化 
+  OLED0561_Init();                                     //OLED初始化
+  I2C_Configuration();                                 //I2C初始化
+
+  OLED_DISPLAY_8x16_BUFFER(0,"   YoungTalk    ");
+  OLED_DISPLAY_8x16_BUFFER(2,"  U DISK TEST   ");
+
+  //======CH376初始化======//
+  SPI2_Init();                                         //SPI2初始化
+  if(mInitCH376Host()== USB_INT_SUCCESS)
+  {
+    OLED_DISPLAY_8x16_BUFFER(4,"   CH376 OK!    ");
+  }
+  while(1)
+  {
+    s = CH376DiskConnect();                            //讀出USB接口狀態
+    if(s == USB_INT_SUCCESS)                           //檢查讀出的狀態是否為USB成功連接
+    { 
+      OLED_DISPLAY_8x16_BUFFER(6," U DISK Ready!  ");
+    }
+    else
+    {
+      OLED_DISPLAY_8x16_BUFFER(6,"                ");
+    } 
+    delay_ms(500);                                     //每次讀取並更新USB接口狀態的間格
+  }
+}
+```
+
+#### 【SPI2函數定義】
+
+`#define SPI2PORT  GPIOB`SPI腳位組定義
+`#define SPI2_MOSI  GPIO_Pin_15`SPI腳位定義
+`#define SPI2_MISO  GPIO_Pin_14`SPI腳位定義
+`#define SPI2_SCK  GPIO_Pin_13`SPI腳位定義
+`#define SPI2_NSS  GPIO_Pin_12`SPI腳位定義
+
+#### 【SPI2初始化函數】
+```
+void SPI2_Init(void)
+{
+  SPI_InitTypeDef  SPI_InitStructure;
+  GPIO_InitTypeDef  GPIO_InitStructure;
+  RCC_APB1PeriphClockCmd(RCC_APB1Periph_SPI2,ENABLE);                      //使能SPI_2时钟
+
+  //======設定MISO(PB14)為浮接輸入======//
+  GPIO_InitStructure.GPIO_Pin = SPI2_MISO;
+  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;
+  GPIO_Init(SPI2PORT,&GPIO_InitStructure);
+
+  //======設定MOSI(PB15)、SCK(PB13)為復用推挽輸出======//
+  GPIO_InitStructure.GPIO_Pin = SPI2_MOSI | SPI2_SCK;
+  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;
+  GPIO_Init(SPI2PORT,&GPIO_InitStructure);
+
+  //======設定NSS(PB12)為推挽輸出======//
+  GPIO_InitStructure.GPIO_Pin = SPI2_NSS;
+  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
+  GPIO_Init(SPI2PORT,&GPIO_InitStructure);
+
+  //======SPI功能設置======
+  SPI_InitStructure.SPI_Direction = SPI_Direction_2Lines_FullDuplex;      //雙線雙向全雙工模式
+  SPI_InitStructure.SPI_Mode = SPI_Mode_Master;                           //設置此裝置為主SPI(SCK主動產生時鐘)
+  SPI_InitStructure.SPI_DataSize = SPI_DataSize_8b;                       //SPI數據大小為8bits
+  SPI_InitStructure.SPI_CPOL = SPI_CPOL_High;                             //空閒狀態時SCK的狀態為高電平
+  SPI_InitStructure.SPI_CPHA = SPI_CPHA_2Edge;                            //設置是在時鐘上升沿接收傳送資料
+  SPI_InitStructure.SPI_NSS = SPI_NSS_Soft;                               //NSS片選
+  SPI_InitStructure.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_256;    //時鐘預分頻器為256(0~256)
+  SPI_InitStructure.SPI_FirstBit = SPI_FirstBit_MSB;                      //MSB高位在前
+  SPI_InitStructure.SPI_CRCPolynomial = 7;                                //CRC較驗和的多項式，7表示不使用
+  SPI_Init(SPI2,&SPI_InitStructure);                                      //初始化SPI2的配置項
+  SPI_Cmd(SPI2,ENABLE);                                                   //啟動SPI2  
+}
+```
+> SPI功能設置詳情參閱[STM32F103固件庫手冊(P223)](https://github.com/hamster-allen/STM32_Learn/blob/master/Development_Information/STM32F103%E5%9B%BA%E4%BB%B6%E5%87%BD%E6%95%B8%E5%BA%AB%E7%94%A8%E6%88%B7%E6%89%8B%E5%86%8A.pdf)
+
+
+
+#### 【SPI2發送接收資料函數】
+**將需要發送的數據放到輸入參數中**<br>
+**將接收到的數據存到返回值返回**
+```
+u8 SPI2_SendByte(u8 Byte)
+{
+  while(SPI_I2S_GetFlagStatus(SPI2,SPI_I2S_FLAG_TXE) == RESET);      //如果发送寄存器数据没有发送完，循环等待
+  SPI_I2S_SendData(SPI2,Byte);                                       //往发送寄存器写入要发送的数据
+  while(SPI_I2S_GetFlagStatus(SPI2,SPI_I2S_FLAG_RXNE) == RESET);     //如果接受寄存器没有收到数据，循环
+  return SPI_I2S_ReceiveData(SPI2);
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
