@@ -202,9 +202,9 @@ void SPI2_Init(void)
 ```
 u8 SPI2_SendByte(u8 Byte)
 {
-  while(SPI_I2S_GetFlagStatus(SPI2,SPI_I2S_FLAG_TXE) == RESET);      //如果发送寄存器数据没有发送完，循环等待
-  SPI_I2S_SendData(SPI2,Byte);                                       //往发送寄存器写入要发送的数据
-  while(SPI_I2S_GetFlagStatus(SPI2,SPI_I2S_FLAG_RXNE) == RESET);     //如果接受寄存器没有收到数据，循环
+  while(SPI_I2S_GetFlagStatus(SPI2,SPI_I2S_FLAG_TXE) == RESET);      //當發送暫存器數據没有發送完，循環等待
+  SPI_I2S_SendData(SPI2,Byte);                                       //向發送暫存器寫入想要發送的數據
+  while(SPI_I2S_GetFlagStatus(SPI2,SPI_I2S_FLAG_RXNE) == RESET);     //當接收暫存器没有收到數據，循環等待
   return SPI_I2S_ReceiveData(SPI2);
 }
 ```
