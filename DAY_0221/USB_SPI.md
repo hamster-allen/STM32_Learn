@@ -125,7 +125,7 @@ int main (void)
 
   //======CH376初始化======//
   SPI2_Init();                                         //SPI2初始化
-  if(mInitCH376Host()== USB_INT_SUCCESS)
+  if(mInitCH376Host() == USB_INT_SUCCESS)              //CH376初始化並判斷是否成功
   {
     OLED_DISPLAY_8x16_BUFFER(4,"   CH376 OK!    ");
   }
@@ -145,12 +145,14 @@ int main (void)
 }
 ```
 
+<br>
+
 #### 【SPI2函數定義】
 
-`#define SPI2PORT  GPIOB`SPI腳位組定義
-`#define SPI2_MOSI  GPIO_Pin_15`SPI腳位定義
-`#define SPI2_MISO  GPIO_Pin_14`SPI腳位定義
-`#define SPI2_SCK  GPIO_Pin_13`SPI腳位定義
+`#define SPI2PORT  GPIOB`SPI腳位組定義<br>
+`#define SPI2_MOSI  GPIO_Pin_15`SPI腳位定義<br>
+`#define SPI2_MISO  GPIO_Pin_14`SPI腳位定義<br>
+`#define SPI2_SCK  GPIO_Pin_13`SPI腳位定義<br>
 `#define SPI2_NSS  GPIO_Pin_12`SPI腳位定義
 
 #### 【SPI2初始化函數】
@@ -197,6 +199,7 @@ void SPI2_Init(void)
 
 
 #### 【SPI2發送接收資料函數】
+**主要用在發送**<br>
 **將需要發送的數據放到輸入參數中**<br>
 **將接收到的數據存到返回值返回**
 ```
@@ -209,16 +212,129 @@ u8 SPI2_SendByte(u8 Byte)
 }
 ```
 
+<br>
+
+#### 【CH376定義】
+
+`#define  CH376_INTPORT  GPIOA`定義腳位組<br>
+`#define  CH376_INT  GPIO_Pin_8`定義腳位(此處為預留，程序中未使用)
+
+> CH376的指令集表另外分裝在`ch276inc.h`<br>
+> 全部指令與用途詳細資料參閱[CH376中文數據手冊(P5)](https://github.com/hamster-allen/STM32_Learn/blob/master/DAY_0221/USB_SPI_%E7%9B%B8%E9%97%9C%E8%B3%87%E6%96%99/CH376%E4%B8%AD%E6%96%87%E6%95%B0%E6%8D%AE%E6%89%8B%E5%86%8C.pdf)
+
+#### 【CH376通訊腳位初始化函數】
+```
+void CH376_PORT_INIT(void)
+{
+  GPIO_InitTypeDef  GPIO_InitStructure;
+  GPIO_InitStructure.GPIO_Pin = CH376_INT;
+  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;    //設定腳位為上拉電阻輸入
+  GPIO_Init(CH376_INTPORT,&GPIO_InitStructure);	
+  
+  GPIO_SetBits(CH376_INTPORT,CH376_INT);           //設置中斷輸入腳的初始狀態為高電平
+  GPIO_SetBits(SPI2PORT,SPI2_NSS);                 //設置NSS也為高電平
+}
+```
+#### 【CH376結束SPI命令函數】
+```
+void xEndCH376Cmd(void)
+{
+  GPIO_SetBits(SPI2PORT,SPI2_NSS);              //直接將NSS設為高電平
+}
+```
+#### 【CH376發送一個字節函數】
+```
+void Spi376OutByte(u8 d)
+{
+  SPI2_SendByte(d);                             //調用SPI2的發送函數
+}
+```
+#### 【CH376接收一個字節函數】
+```
+u8 Spi376InByte(void)
+{
+  while(SPI_I2S_GetFlagStatus(SPI2,SPI_I2S_FLAG_RXNE) == RESET);    //等待接收暫存器有數據
+  return SPI_I2S_ReceiveData(SPI2);                                 //只要一有數據將會回傳
+}
+```
+
+#### 【CH376寫命令函數】
+```
+void xWriteCH376Cmd(u8 mCmd)
+{
+  GPIO_SetBits(SPI2PORT,SPI2_NSS);              //先將NSS復位(高電平)
+  delay_us(20);                                 //延遲
+  GPIO_ResetBits(SPI2PORT,SPI2_NSS);            //將NSS選中(低電平)
+  Spi376OutByte(mCmd);                          //調用【CH376發送一個字節函數】來發送命令數據 
+  delay_us(1700);                               //確保讀寫週期大於1.5us
+}
+```
+#### 【CH376寫數據函數】
+```
+void xWriteCH376Data(u8 mData)
+{
+  Spi376OutByte(mData);                         //調用SPI2的發送函數
+  delay_us(800);                                //為了確保讀寫週期大於0.6ms
+}
+```
+#### 【CH376讀出數據函數】
+```
+u8 xReadCH376Data(void)
+{
+  u8 i;
+  delay_us(10);
+  i = SPI2_SendByte(0xFF);                      //調用SPI2.h的數據發送函數，因為此函數每次發送後會接收
+  return(i);
+}
+```
+#### 【CH376查詢中斷(INT#)】
+**當腳位INT#為低電平時，表示有中斷信號**<br>
+**回傳：0->無中斷、1->有中斷**
+```
+u8 Query376Interrupt(void)
+{
+	u8 i;
+ 	i = GPIO_ReadInputDataBit(CH376_INTPORT,CH376_INT); 	    //透過IO口讀出中斷狀態
+	return(i);                                                //回傳
+}			
+```
+#### 【CH376初始化函數】
+```
+u8 mInitCH376Host(void)
+{
+  u8	res;	
+  delay_ms(600);                                  //等待周邊元件上電後，進入正常工作狀態
+  CH376_PORT_INIT();                              //中斷接腳初始化
+
+  xWriteCH376Cmd(CMD11_CHECK_EXIST);              //發送命令，測試通訊接口和工作狀態
+  xWriteCH376Data(0x55);                          //隨意發送數據用於測試通訊
+  res = xReadCH376Data();                         //成功取得通訊 -> 回傳數據為傳送的取反
+  //printf("res =%02x \n",(unsigned short)res);
+  xEndCH376Cmd( );                                //結束通訊
+
+  if (res != 0xAA) return(ERR_USB_UNKNOWN);       //如果接收到的數據不等於發送數據的按位取反，函數回傳通訊接口不正常
+
+  xWriteCH376Cmd(CMD11_SET_USB_MODE);             //發送命令，設置USB的工作模式
+  xWriteCH376Data(0x06);                          //發送參數，設置為切換到已啟用的USB主機模式，自動產生SOF包
+  delay_us(20);                                   //設置USB工作模式在10us內完成，因此保守延遲20us
+  res = xReadCH376Data();                         //讀出回傳的最終操作模式
+  //printf("res =%02x \n",(unsigned short)res);
+  xEndCH376Cmd();                                 //結束通訊
+  
+  if(res == CMD_RET_SUCCESS)                      //RES=51  命令操作成功
+  {  
+    return(USB_INT_SUCCESS);                      //函數回傳USB設置成功
+  }
+  else
+  {
+    return(ERR_USB_UNKNOWN);                      //函數回傳USB設置失敗
+  }
+}
+```
 
 
-
-
-
-
-
-
-
-
+> 通訊IO不正常的可能原因有<br>
+> IO口連接異常、其他設備影響(NSS不唯一)、串口波特率、一直在復位、晶振不工作
 
 
 
