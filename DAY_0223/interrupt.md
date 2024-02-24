@@ -14,14 +14,14 @@
 
   * **觸發後需要CPU參與**
 
-![中斷模式_解釋]()
+![中斷模式_解釋](https://github.com/hamster-allen/STM32_Learn/blob/master/DAY_0223/interrupt_picture/%E4%B8%AD%E6%96%B7%E6%A8%A1%E5%BC%8F_%E8%A7%A3%E9%87%8B.png)
 
 
 * 事件模式
 
   * **觸發後不需要CPU參與，但需要提前設置**
 
-![事件模式_解釋]()
+![事件模式_解釋](https://github.com/hamster-allen/STM32_Learn/blob/master/DAY_0223/interrupt_picture/%E4%BA%8B%E4%BB%B6%E6%A8%A1%E5%BC%8F_%E8%A7%A3%E9%87%8B.png)
 
 <br>
 
@@ -59,7 +59,7 @@
 所有的中斷都將傳至嵌套向量中斷控制器中，會依照優先級進行排隊處理<br>
 優先級越高越優先傳送中斷請求給CPU處理
 
-![中斷_嵌套向量中斷控制器_關係說明圖]()
+![中斷_嵌套向量中斷控制器_關係說明圖](https://github.com/hamster-allen/STM32_Learn/blob/master/DAY_0223/interrupt_picture/%E4%B8%AD%E6%96%B7_%E5%B5%8C%E5%A5%97%E5%90%91%E9%87%8F%E4%B8%AD%E6%96%B7%E6%8E%A7%E5%88%B6%E5%99%A8_%E9%97%9C%E4%BF%82%E8%AA%AA%E6%98%8E%E5%9C%96.png)
 
 > 在程序中，如果要使用外部IO中斷，不只要開啟外部IO中斷，也要開啟NVIC<br>
 > 確保中斷可以順利進入NVIC，並傳送給CPU處理
@@ -250,7 +250,7 @@ void  EXTI9_5_IRQHandler(void)
 
 ## 分組設置
 
-  ![分組設置]()
+  ![分組設置](https://github.com/hamster-allen/STM32_Learn/blob/master/DAY_0223/interrupt_picture/%E5%88%86%E7%B5%84%E8%A8%AD%E7%BD%AE.png)
 
 
 
