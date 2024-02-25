@@ -44,7 +44,7 @@ int main (void){//主程序
 	while(1){
 		if(!GPIO_ReadInputDataBit(TOUCH_KEYPORT,TOUCH_KEY_A)){ //读触摸按键的电平
 			OLED_DISPLAY_8x16_BUFFER(6,"  Angle 0       "); //显示字符串
-			TIM_SetCompare3(TIM3,1500);        //改变比较值TIM3->CCR2达到调节占空比的效果（1500为0度）
+			TIM_SetCompare3(TIM3,2300);        //改变比较值TIM3->CCR2达到调节占空比的效果（1500为0度）
 		}
 		if(!GPIO_ReadInputDataBit(TOUCH_KEYPORT,TOUCH_KEY_B)){ //读触摸按键的电平
 			OLED_DISPLAY_8x16_BUFFER(6,"  Angle 45      "); //显示字符串
@@ -56,7 +56,7 @@ int main (void){//主程序
 		}
 		if(!GPIO_ReadInputDataBit(TOUCH_KEYPORT,TOUCH_KEY_D)){ //读触摸按键的电平
 			OLED_DISPLAY_8x16_BUFFER(6,"  Angle 180     "); //显示字符串
-			TIM_SetCompare3(TIM3,7500);        //改变比较值TIM3->CCR2达到调节占空比的效果
+			TIM_SetCompare3(TIM3,7000);        //改变比较值TIM3->CCR2达到调节占空比的效果
 		}
 	}
 }
