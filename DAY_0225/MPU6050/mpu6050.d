@@ -3,7 +3,7 @@ mpu6050.o: Hardware\MPU6050\MPU6050.h
 mpu6050.o: .\Basic\sys\sys.h
 mpu6050.o: .\CMSIS\stm32f10x.h
 mpu6050.o: .\CMSIS\core_cm3.h
-mpu6050.o: C:\Keil\ARM\RV31\INC\stdint.h
+mpu6050.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
 mpu6050.o: .\CMSIS\system_stm32f10x.h
 mpu6050.o: .\User\stm32f10x_conf.h
 mpu6050.o: .\Lib\inc\stm32f10x_adc.h

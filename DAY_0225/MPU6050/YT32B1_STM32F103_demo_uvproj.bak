@@ -345,7 +345,7 @@
               <MiscControls></MiscControls>
               <Define>USE_STDPERIPH_DRIVER,STM32F10X_MD</Define>
               <Undefine></Undefine>
-              <IncludePath>.\CMSIS;.\Lib\inc;.\Lib\src;.\User;.\Startup;.\Basic\delay;.\Basic\sys;.\Hardware\LED;.\Hardware\RELAY;.\Hardware\OLED0561;.\Basic\i2c;.\Hardware\DHT11</IncludePath>
+              <IncludePath>.\CMSIS;.\Lib\inc;.\Lib\src;.\User;.\Startup;.\Basic\delay;.\Basic\sys;.\Hardware\LED;.\Hardware\RELAY;.\Hardware\OLED0561;.\Basic\i2c;.\Hardware\MPU6050</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -501,9 +501,9 @@
               <FilePath>.\Hardware\OLED0561\oled0561.c</FilePath>
             </File>
             <File>
-              <FileName>dht11.c</FileName>
+              <FileName>MPU6050.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Hardware\DHT11\dht11.c</FilePath>
+              <FilePath>.\Hardware\MPU6050\MPU6050.c</FilePath>
             </File>
           </Files>
         </Group>

@@ -2,7 +2,7 @@ stm32f10x_usart.o: Lib\src\stm32f10x_usart.c
 stm32f10x_usart.o: .\Lib\inc\stm32f10x_usart.h
 stm32f10x_usart.o: .\CMSIS\stm32f10x.h
 stm32f10x_usart.o: .\CMSIS\core_cm3.h
-stm32f10x_usart.o: C:\Keil\ARM\RV31\INC\stdint.h
+stm32f10x_usart.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
 stm32f10x_usart.o: .\CMSIS\system_stm32f10x.h
 stm32f10x_usart.o: .\User\stm32f10x_conf.h
 stm32f10x_usart.o: .\Lib\inc\stm32f10x_adc.h
