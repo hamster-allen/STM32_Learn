@@ -16,7 +16,9 @@
 * 自由定時器
 * 隨時都可以餵狗
 
-![獨立看門狗示意圖]()
+![獨立看門狗示意圖](https://github.com/hamster-allen/STM32_Learn/blob/master/DAY_0226/WDT_picture/%E7%8D%A8%E7%AB%8B%E7%9C%8B%E9%96%80%E7%8B%97%E7%A4%BA%E6%84%8F%E5%9C%96.png)
+
+![窗口看門狗園理圖](https://github.com/hamster-allen/STM32_Learn/blob/master/DAY_0226/WDT_picture/%E7%8D%A8%E7%AB%8B%E7%9C%8B%E9%96%80%E7%8B%97%E5%8E%9F%E7%90%86%E5%9C%96.png)
 
 ## 窗口看門狗
 
@@ -26,9 +28,9 @@
 * 在調試模式下可以被凍結
 * 只能在指定的範圍餵狗，如果不在指定的範圍餵狗會發出復位信號
 
-![窗口看門狗示意圖]()
+![窗口看門狗示意圖](https://github.com/hamster-allen/STM32_Learn/blob/master/DAY_0226/WDT_picture/%E7%AA%97%E5%8F%A3%E7%9C%8B%E5%80%91%E7%8B%97%E7%A4%BA%E6%84%8F%E5%9C%96.png)
 
-![窗口看門狗園理圖]()
+![窗口看門狗園理圖](https://github.com/hamster-allen/STM32_Learn/blob/master/DAY_0226/WDT_picture/%E7%AA%97%E5%8F%A3%E7%9C%8B%E9%96%80%E7%8B%97%E5%8E%9F%E7%90%86%E5%9C%96.png)
 
 
 
